@@ -1,0 +1,7 @@
+﻿services:
+  qbca.app:
+    image: qbca.app
+    build:
+      context: .
+      dockerfile: QBCA.app/Dockerfile
+
