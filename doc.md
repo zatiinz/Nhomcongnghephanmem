@@ -1,1 +1,1 @@
-https://dangtien47.atlassian.net/wiki/x/mwEB
+https://dangtien47.atlassian.net/wiki/external/MjM3NDk0YTJiN2QyNGFkOTkxNTM5MGQ1ZjU2MGY1N2M
