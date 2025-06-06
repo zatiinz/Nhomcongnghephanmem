@@ -4,13 +4,13 @@ namespace QBCA.app.Models;
 //Quảng lý người dùng 
 public class User
 {
-    public string FullName {get; set;}
+    public string FullName {get; set;} = string.Empty();
     
-    public string Email {get; set;}
+    public string Email {get; set;} = string.Empty();
     
-    public string Id {get; set;} 
+    public int Id {get; set;} 
     
-    public string Role {get; set;}
+    public string Role {get; set;} = string.Empty();
     
     
     public ICollection<Notification> Notifications {get; set;}
