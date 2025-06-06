@@ -6,11 +6,11 @@ public class Subject
 {
     public int SubhectId {get; set;}
     
-    public string SubjectName {get; set;}
+    public string SubjectName {get; set;} = string.Empty();
     
-    public string Clos {get; set;} 
+    public string Clos {get; set;} = string.Empty();
     
-    public string Description {get; set;}
+    public string Description {get; set;} = string.Empty();
     
     
     public ICollection<Question>  Questions{get; set;}
