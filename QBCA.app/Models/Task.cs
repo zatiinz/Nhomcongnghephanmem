@@ -8,9 +8,9 @@ public class Task
     
     public int SubjectId { get; set; }
     
-    public string TaskDescription { get; set; }
+    public string TaskDescription { get; set; } = string.Empty();
     
-    public string Status { get; set; }
+    public string Status { get; set; } = string.Empty();
     
     
     public User AssignedTo { get; set; }
