@@ -6,9 +6,9 @@ public class Exam
     
     public int SubjectId { get; set; }
     
-    public string ExamClos { get; set; }
+    public string ExamClos { get; set; } = string.Empty();
     
-    public string TotalQuestions { get; set; } 
+    public string TotalQuestions { get; set; } = string.Empty();
     
     public Subject[] Subjects { get; set; }
 }
