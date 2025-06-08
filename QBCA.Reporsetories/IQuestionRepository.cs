@@ -2,10 +2,15 @@
 
 namespace QBCA.Reporsetories;
 //# Truy cập DB
-public class IQuestionRepository
+public partial IQuestionRepository
 {
-    public async Task<IEnumerable<Question>> GetAllAsync()
-    {
-        throw new NotImplementedException();
-    }
+    Task<IEnumerable<Question>> GetAllsync();
+
+    Task<Question?> GetByIdAsync(int id);
+
+    Task AddAsync(Question  question);
+
+    Task UpdateAsync(Question question);
+
+    Task <boll> Delete(int);
 }
