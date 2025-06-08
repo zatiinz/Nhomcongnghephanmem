@@ -165,5 +165,12 @@ internal class Iconfiguration
         get => throw new NotImplementedException();
     }
 }
+public class QbcaDBContext : DbContext
+{
+    public QbcaDbContext(DbContextOptions<QbcaDbContext> options):base (options)
+    {
+    }
+    public DbSet<Question> Question { get; set} 
+}
 
 
