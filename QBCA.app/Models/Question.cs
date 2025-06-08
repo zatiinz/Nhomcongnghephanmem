@@ -4,18 +4,20 @@ namespace QBCA.app.Models;
 
 public class Question
 {
-    public int QestionId {get; set;}
+    public int Id {get; set;}
     
-    public int SubjectId {get; set;}
+    public string Content {get; set;}
     
-    public string QuestionText {get; set;} = string.Empty();
+    public string CLO {get; set;} = string.Empty();
     
-    public string Difficulty {get; set;} = string.Empty();
+    public string DifficultyLevel {get; set;} = string.Empty();
     
-    public bool IsDuplicated {get; set;} 
+    public Subject Subject { get; set; }
     
-    public string Createdby {get; set;} = string.Empty();
+    public ICollection<QuestionReview> QuestionReviews { get; set; }
     
+}
+public class QuestionReview
+{
     
-    public Subject  Subject {get; set;}
 }
