@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace QBCA.Services;
+
+public class EmployeeService
+{
+    private EmployeeRepository _repo;
+
+    public EmployeeService()
+    {
+        _repo = new EmployeeRepository();
+    }
+
+    public List<Employee> GetAllEmployees()
+    {
+        return _repo.GetAllEmployees();
+    }
+
+    public Employee GetEmployee(int id)
+    {
+        return _repo.GetEmployeeById(id);
+    }
+
+    public void CreateEmployee(Employee emp, string plainPassword)
+    {
+        // Validate dữ liệu
+        if (string.IsNullOrEmpty(emp.Email)) 
+            throw new Exception("Email không được để trống.");
+
+        // Mã hóa mật khẩu
+        emp.PasswordHash = HashPassword(plainPassword);
+
+        // Gọi repository để lưu
+        _repo.AddEmployee(emp);
+    }
+
+    public void UpdateEmployee(Employee emp)
+    {
+        // Có thể thêm logic kiểm tra quyền, validate ở đây
+        _repo.UpdateEmployee(emp);
+    }
+
+    private string HashPassword(string password)
+    {
+        // Hàm giả mã hóa password (ví dụ dùng SHA256)
+        return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(password)); 
+    }
+}
