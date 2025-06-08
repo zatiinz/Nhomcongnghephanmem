@@ -1,20 +1,19 @@
-﻿using QBCA.Dataccess.Entities;
-using QBCA.Reporsetories;
-
-namespace QBCA.Services;
-// # Xử lý nghiệp vụ logic
-public class ExamService
+public class ExamService : IExamService
 {
-    private readonly IExamRepository _repository;
+    private readonly IExamRepository _examRepository;
 
-    public ExamService(IExamRepository repository)
+    public ExamService(IExamRepository examRepository)
     {
-        _repository = repository;
+        _examRepository = examRepository;
     }
 
-    public async Task<bool> CreateEXamAsync(Exam exam)
-    {
-        //kiểm tra trùng lặp buộc nghiệp vụ
-        return await _repository.AddAsync(exam);
-    }
+    public async Task<IEnumerable<Exam>> GetAllExamsAsync() => await _examRepository.GetAllAsync();
+
+    public async Task<Exam> GetExamByIdAsync(int id) => await _examRepository.GetByIdAsync(id);
+
+    public async Task<bool> CreateExamAsync(Exam exam) => await _examRepository.CreateAsync(exam);
+
+    public async Task<bool> UpdateExamAsync(Exam exam) => await _examRepository.UpdateAsync(exam);
+
+    public async Task<bool> DeleteExamAsync(int id) => await _examRepository.DeleteAsync(id);
 }
