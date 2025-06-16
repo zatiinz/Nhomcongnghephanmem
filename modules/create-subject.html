@@ -1,0 +1,104 @@
+<section class="module-container">
+  <header class="module-header">
+    <h2>
+      <i class="fas fa-plus-circle"></i>
+      <span>Tạo môn học mới</span>
+    </h2>
+    <div class="module-actions">
+      <button onclick="loadPage('dashboard-home')" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Quay lại
+      </button>
+    </div>
+  </header>
+  
+  <div class="module-content">
+    <form id="createSubjectForm" class="form-card">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="subjectName" class="form-label">Tên môn học</label>
+          <input type="text" id="subjectName" class="form-control" placeholder="Nhập tên môn học" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="subjectCode" class="form-label">Mã môn học</label>
+          <input type="text" id="subjectCode" class="form-control" placeholder="Nhập mã môn học" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="subjectDescription" class="form-label">Mô tả môn học</label>
+        <textarea id="subjectDescription" class="form-control" rows="3" placeholder="Nhập mô tả môn học"></textarea>
+      </div>
+      
+      <section class="form-section">
+        <header class="section-header">
+          <i class="fas fa-list-ol section-icon"></i>
+          <h3 class="section-title">Kết quả học tập (CLO)</h3>
+        </header>
+        
+        <div class="form-group">
+          <div class="clo-input-group">
+            <input type="text" class="form-control clo-input" placeholder="Nhập CLO">
+            <button type="button" class="btn btn-primary add-clo">
+              <i class="fas fa-plus"></i> Thêm
+            </button>
+          </div>
+          <div id="cloItems" class="clo-items"></div>
+        </div>
+      </section>
+      
+      <section class="form-section">
+        <header class="section-header">
+          <i class="fas fa-chart-pie section-icon"></i>
+          <h3 class="section-title">Phân bổ độ khó</h3>
+          <div class="difficulty-summary">
+            Tổng: <span id="difficultyTotal">100</span>%
+          </div>
+        </header>
+        
+        <div class="difficulty-distribution">
+          <div class="difficulty-level">
+            <div class="difficulty-card easy">
+              <label for="easy" class="difficulty-label">Dễ</label>
+              <input type="number" id="easy" class="form-control" min="0" max="100" value="30" required>
+              <div class="difficulty-visual">
+                <div class="visual-bar" style="height: 30%"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="difficulty-level">
+            <div class="difficulty-card medium">
+              <label for="medium" class="difficulty-label">Trung bình</label>
+              <input type="number" id="medium" class="form-control" min="0" max="100" value="50" required>
+              <div class="difficulty-visual">
+                <div class="visual-bar" style="height: 50%"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="difficulty-level">
+            <div class="difficulty-card hard">
+              <label for="hard" class="difficulty-label">Khó</label>
+              <input type="number" id="hard" class="form-control" min="0" max="100" value="20" required>
+              <div class="difficulty-visual">
+                <div class="visual-bar" style="height: 20%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <footer class="form-actions">
+        <button type="reset" class="btn btn-secondary">
+          <i class="fas fa-undo"></i> Đặt lại
+        </button>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-save"></i> Lưu môn học
+        </button>
+      </footer>
+    </form>
+  </div>
+</section>
+
+<script src="js/create-subject.js"></script>

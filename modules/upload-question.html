@@ -1,0 +1,259 @@
+<div class="module-container">
+  <h2><i class="fas fa-cloud-upload-alt"></i> Upload New Question</h2>
+  
+  <div class="upload-container">
+    <form id="uploadQuestionForm" class="form-card">
+      <div class="form-group">
+        <label for="subjectSelect">Select Subject</label>
+        <select id="subjectSelect" name="subjectSelect" required>
+          <option value="">-- Select Subject --</option>
+          <!-- Subjects will be loaded from localStorage -->
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="questionType">Question Type</label>
+        <select id="questionType" name="questionType" required>
+          <option value="">-- Select Type --</option>
+          <option value="Multiple Choice">Multiple Choice</option>
+          <option value="True/False">True/False</option>
+          <option value="Short Answer">Short Answer</option>
+          <option value="Essay">Essay</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="cloSelect">Select CLO</label>
+        <select id="cloSelect" name="cloSelect" required disabled>
+          <option value="">-- Select CLO --</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="questionText">Question Text (English only)</label>
+        <textarea id="questionText" name="questionText" rows="5" required 
+          placeholder="Enter the question text in English..."></textarea>
+      </div>
+      
+      <div class="form-group" id="optionsContainer" style="display: none;">
+        <label>Options (for multiple choice)</label>
+        <div id="questionOptions">
+          <div class="option-item">
+            <input type="text" placeholder="Option text" class="option-input">
+            <div class="option-actions">
+              <input type="radio" name="correctOption" value="0">
+              <button type="button" class="btn btn-sm btn-danger remove-option">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="addOptionBtn" class="btn btn-sm btn-secondary">
+          <i class="fas fa-plus"></i> Add Option
+        </button>
+      </div>
+      
+      <div class="form-group">
+        <label for="difficulty">Difficulty Level</label>
+        <select id="difficulty" name="difficulty" required>
+          <option value="">-- Select Difficulty --</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="questionReference">Reference (optional)</label>
+        <input type="text" id="questionReference" name="questionReference" 
+          placeholder="Book, chapter, page, etc.">
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" onclick="loadPage('dashboard-home')" class="btn btn-secondary">
+          <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-upload"></i> Upload Question
+        </button>
+      </div>
+    </form>
+    
+    <div id="uploadResult" class="result-message"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('uploadQuestionForm');
+  const subjectSelect = document.getElementById('subjectSelect');
+  const cloSelect = document.getElementById('cloSelect');
+  const questionType = document.getElementById('questionType');
+  const optionsContainer = document.getElementById('optionsContainer');
+  const questionOptions = document.getElementById('questionOptions');
+  const addOptionBtn = document.getElementById('addOptionBtn');
+  
+  // Load subjects into dropdown
+  const subjects = JSON.parse(localStorage.getItem('subjects') || []);
+  subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>' + 
+    subjects.map(sub => 
+      `<option value="${sub.id}">${sub.code} - ${sub.name}</option>`
+    ).join('');
+  
+  // Update CLOs when subject changes
+  subjectSelect.addEventListener('change', () => {
+    const subjectId = subjectSelect.value;
+    const subject = subjects.find(s => s.id === subjectId);
+    
+    cloSelect.innerHTML = '<option value="">-- Select CLO --</option>';
+    cloSelect.disabled = !subject;
+    
+    if (subject) {
+      subject.clos.forEach(clo => {
+        cloSelect.innerHTML += `<option value="${clo}">${clo}</option>`;
+      });
+    }
+  });
+  
+  // Show/hide options based on question type
+  questionType.addEventListener('change', () => {
+    optionsContainer.style.display = 
+      questionType.value === 'Multiple Choice' ? 'block' : 'none';
+  });
+  
+  // Add option
+  addOptionBtn.addEventListener('click', () => {
+    const optionIndex = questionOptions.children.length;
+    const optionItem = document.createElement('div');
+    optionItem.className = 'option-item';
+    optionItem.innerHTML = `
+      <input type="text" placeholder="Option text" class="option-input">
+      <div class="option-actions">
+        <input type="radio" name="correctOption" value="${optionIndex}">
+        <button type="button" class="btn btn-sm btn-danger remove-option">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    `;
+    questionOptions.appendChild(optionItem);
+  });
+  
+  // Remove option
+  questionOptions.addEventListener('click', (e) => {
+    if (e.target.classList.contains('remove-option')) {
+      e.target.closest('.option-item').remove();
+      // Reindex correct options
+      const options = questionOptions.querySelectorAll('input[type="radio"]');
+      options.forEach((opt, idx) => {
+        opt.value = idx;
+      });
+    }
+  });
+  
+  // Form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const subjectId = form.subjectSelect.value;
+    const type = form.questionType.value;
+    const clo = form.cloSelect.value;
+    const text = form.questionText.value.trim();
+    const difficulty = form.difficulty.value;
+    const reference = form.questionReference.value.trim();
+    
+    if (!subjectId || !type || !clo || !text || !difficulty) {
+      showUploadResult('Please fill all required fields', 'danger');
+      return;
+    }
+    
+    // Validate options for multiple choice
+    let options = [];
+    let correctOption = -1;
+    if (type === 'Multiple Choice') {
+      const optionInputs = questionOptions.querySelectorAll('.option-input');
+      optionInputs.forEach((input, idx) => {
+        const optionText = input.value.trim();
+        if (optionText) {
+          options.push(optionText);
+          if (form.correctOption.value === idx.toString()) {
+            correctOption = idx;
+          }
+        }
+      });
+      
+      if (options.length < 2) {
+        showUploadResult('Multiple choice questions require at least 2 options', 'danger');
+        return;
+      }
+      
+      if (correctOption === -1) {
+        showUploadResult('Please select the correct answer', 'danger');
+        return;
+      }
+    }
+    
+    // Get subject name for display
+    const subject = subjects.find(s => s.id === subjectId);
+    const subjectName = subject ? `${subject.code} - ${subject.name}` : 'Unknown Subject';
+    
+    // Create new question object
+    const newQuestion = {
+      id: Date.now().toString(),
+      subjectId,
+      subjectName,
+      type,
+      clo,
+      text,
+      difficulty,
+      reference,
+      options: options.length > 0 ? options : undefined,
+      correctOption: correctOption !== -1 ? correctOption : undefined,
+      createdAt: new Date().toISOString(),
+      createdBy: localStorage.getItem('currentUser') || 'Unknown',
+      status: 'pending_review'
+    };
+    
+    // Save to localStorage
+    const questions = JSON.parse(localStorage.getItem('questions') || []);
+    questions.push(newQuestion);
+    localStorage.setItem('questions', JSON.stringify(questions));
+    
+    // Show success message
+    showUploadResult(`Question uploaded successfully to ${subjectName}!`, 'success');
+    
+    // Reset form
+    form.reset();
+    cloSelect.disabled = true;
+    optionsContainer.style.display = 'none';
+    questionOptions.innerHTML = `
+      <div class="option-item">
+        <input type="text" placeholder="Option text" class="option-input">
+        <div class="option-actions">
+          <input type="radio" name="correctOption" value="0">
+          <button type="button" class="btn btn-sm btn-danger remove-option">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    
+    // Update dashboard stats
+    if (typeof updateDashboardStats === 'function') {
+      updateDashboardStats();
+    }
+    
+    // Add to activity log
+    addActivity(`Uploaded new ${type.toLowerCase()} question to ${subjectName}`);
+  });
+  
+  function showUploadResult(message, type) {
+    const resultDiv = document.getElementById('uploadResult');
+    resultDiv.innerHTML = `
+      <div class="alert alert-${type}">
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        ${message}
+      </div>
+    `;
+  }
+});
+</script>

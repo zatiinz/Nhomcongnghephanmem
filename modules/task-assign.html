@@ -1,0 +1,334 @@
+<div class="module-container">
+  <h2><i class="fas fa-tasks"></i> Task Assignment</h2>
+  
+  <div class="task-management-container">
+    <div class="task-form-section">
+      <form id="taskForm" class="form-card">
+        <div class="form-group">
+          <label for="taskTitle">Task Title</label>
+          <input type="text" id="taskTitle" name="taskTitle" required placeholder="Enter task title">
+        </div>
+        
+        <div class="form-group">
+          <label for="taskDescription">Description</label>
+          <textarea id="taskDescription" name="taskDescription" rows="3" placeholder="Enter task description"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="taskType">Task Type</label>
+          <select id="taskType" name="taskType" required>
+            <option value="">-- Select Type --</option>
+            <option value="question_review">Question Review</option>
+            <option value="duplicate_check">Duplicate Check</option>
+            <option value="exam_preparation">Exam Preparation</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="taskAssignee">Assign To</label>
+          <select id="taskAssignee" name="taskAssignee" required>
+            <option value="">-- Select Assignee --</option>
+            <option value="lecturer1">Lecturer 1</option>
+            <option value="lecturer2">Lecturer 2</option>
+            <option value="lecturer3">Lecturer 3</option>
+            <option value="subject_leader">Subject Leader</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="taskDeadline">Deadline</label>
+          <input type="date" id="taskDeadline" name="taskDeadline" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="taskPriority">Priority</label>
+          <select id="taskPriority" name="taskPriority" required>
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" onclick="loadPage('dashboard-home')" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add Task
+          </button>
+        </div>
+      </form>
+    </div>
+    
+    <div class="task-list-section">
+      <div class="task-filters">
+        <div class="filter-group">
+          <label for="filterStatus">Status</label>
+          <select id="filterStatus" name="filterStatus">
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="filterAssignee">Assignee</label>
+          <select id="filterAssignee" name="filterAssignee">
+            <option value="all">All</option>
+            <option value="me">Assigned to Me</option>
+            <option value="others">Assigned to Others</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="filterType">Type</label>
+          <select id="filterType" name="filterType">
+            <option value="all">All</option>
+            <option value="question_review">Question Review</option>
+            <option value="duplicate_check">Duplicate Check</option>
+            <option value="exam_preparation">Exam Preparation</option>
+          </select>
+        </div>
+      </div>
+      
+      <div id="taskList" class="task-list">
+        <!-- Tasks will be loaded here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const taskForm = document.getElementById('taskForm');
+  const taskList = document.getElementById('taskList');
+  const filterStatus = document.getElementById('filterStatus');
+  const filterAssignee = document.getElementById('filterAssignee');
+  const filterType = document.getElementById('filterType');
+  
+  // Set default deadline to tomorrow
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  document.getElementById('taskDeadline').valueAsDate = tomorrow;
+  
+  // Load and render tasks
+  function renderTasks() {
+    const tasks = JSON.parse(localStorage.getItem('tasks') || []);
+    const statusFilter = filterStatus.value;
+    const assigneeFilter = filterAssignee.value;
+    const typeFilter = filterType.value;
+    const currentUser = localStorage.getItem('currentUser') || "";
+    
+    let filteredTasks = tasks;
+    
+    // Apply filters
+    if (statusFilter !== "all") {
+      filteredTasks = filteredTasks.filter(t => t.status === statusFilter);
+    }
+    
+    if (assigneeFilter === "me") {
+      filteredTasks = filteredTasks.filter(t => t.assignee === currentUser);
+    } else if (assigneeFilter === "others") {
+      filteredTasks = filteredTasks.filter(t => t.assignee !== currentUser);
+    }
+    
+    if (typeFilter !== "all") {
+      filteredTasks = filteredTasks.filter(t => t.type === typeFilter);
+    }
+    
+    // Sort by deadline (ascending)
+    filteredTasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+    
+    // Render tasks
+    if (filteredTasks.length === 0) {
+      taskList.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-tasks"></i>
+          <p>No tasks found matching your filters</p>
+        </div>
+      `;
+    } else {
+      taskList.innerHTML = filteredTasks.map(task => `
+        <div class="task-card ${task.status} ${task.priority}">
+          <div class="task-header">
+            <h4>${task.title}</h4>
+            <div class="task-meta">
+              <span class="task-type">${task.type.replace('_', ' ')}</span>
+              <span class="task-priority">${task.priority}</span>
+            </div>
+          </div>
+          <div class="task-body">
+            <p>${task.description || 'No description'}</p>
+            <div class="task-details">
+              <span><i class="fas fa-user"></i> ${task.assignee}</span>
+              <span><i class="fas fa-calendar-alt"></i> ${formatDate(task.deadline)}</span>
+              <span class="task-status">${task.status.replace('_', ' ')}</span>
+            </div>
+          </div>
+          <div class="task-actions">
+            ${task.status !== 'completed' ? `
+              <button class="btn btn-sm btn-primary" onclick="updateTaskStatus('${task.id}', 'in_progress')">
+                <i class="fas fa-play"></i> Start
+              </button>
+              <button class="btn btn-sm btn-success" onclick="updateTaskStatus('${task.id}', 'completed')">
+                <i class="fas fa-check"></i> Complete
+              </button>
+            ` : ''}
+            <button class="btn btn-sm btn-info" onclick="viewTaskDetails('${task.id}')">
+              <i class="fas fa-eye"></i> View
+            </button>
+            <button class="btn btn-sm btn-danger" onclick="deleteTask('${task.id}')">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+  
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
+  }
+  
+  // Task form submission
+  if (taskForm) {
+    taskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const newTask = {
+        id: Date.now().toString(),
+        title: taskForm.taskTitle.value.trim(),
+        description: taskForm.taskDescription.value.trim(),
+        type: taskForm.taskType.value,
+        assignee: taskForm.taskAssignee.value,
+        deadline: taskForm.taskDeadline.value,
+        priority: taskForm.taskPriority.value,
+        status: "pending",
+        createdAt: new Date().toISOString(),
+        createdBy: localStorage.getItem('currentUser') || "Unknown"
+      };
+      
+      // Save to localStorage
+      const tasks = JSON.parse(localStorage.getItem('tasks') || []);
+      tasks.push(newTask);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      
+      // Reset form
+      taskForm.reset();
+      // Set default deadline to tomorrow
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      document.getElementById('taskDeadline').valueAsDate = tomorrow;
+      
+      // Re-render tasks
+      renderTasks();
+      
+      // Update dashboard stats
+      if (typeof updateDashboardStats === 'function') {
+        updateDashboardStats();
+      }
+      
+      // Add to activity log
+      addActivity(`Created new task: ${newTask.title}`);
+      
+      // Show notification
+      showNotification(`Task "${newTask.title}" created successfully!`, 'success');
+    });
+  }
+  
+  // Filter changes
+  filterStatus.addEventListener('change', renderTasks);
+  filterAssignee.addEventListener('change', renderTasks);
+  filterType.addEventListener('change', renderTasks);
+  
+  // Initial render
+  renderTasks();
+});
+
+// Global functions
+window.updateTaskStatus = function(taskId, newStatus) {
+  let tasks = JSON.parse(localStorage.getItem('tasks') || []);
+  const taskIndex = tasks.findIndex(t => t.id === taskId);
+  
+  if (taskIndex !== -1) {
+    tasks[taskIndex].status = newStatus;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+    // Re-render tasks
+    if (document.getElementById('taskList')) {
+      const filterStatus = document.getElementById('filterStatus');
+      const currentFilter = filterStatus.value;
+      
+      // If filtering by status and the new status doesn't match, change filter to "all"
+      if (currentFilter !== 'all' && currentFilter !== newStatus) {
+        filterStatus.value = 'all';
+      }
+      
+      renderTasks();
+    }
+    
+    // Add to activity log
+    addActivity(`Updated task ${taskId} to ${newStatus}`);
+    
+    // Show notification
+    showNotification(`Task status updated to ${newStatus.replace('_', ' ')}`, 'info');
+  }
+};
+
+window.viewTaskDetails = function(taskId) {
+  const tasks = JSON.parse(localStorage.getItem('tasks') || []);
+  const task = tasks.find(t => t.id === taskId);
+  
+  if (task) {
+    // In a real app, this would show a detailed modal
+    alert(`Task Details:\n\nTitle: ${task.title}\nDescription: ${task.description}\nAssignee: ${task.assignee}\nDeadline: ${new Date(task.deadline).toLocaleDateString()}\nStatus: ${task.status.replace('_', ' ')}`);
+  }
+};
+
+window.deleteTask = function(taskId) {
+  if (confirm('Are you sure you want to delete this task?')) {
+    let tasks = JSON.parse(localStorage.getItem('tasks') || []);
+    tasks = tasks.filter(t => t.id !== taskId);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+    // Re-render tasks
+    if (document.getElementById('taskList')) {
+      renderTasks();
+    }
+    
+    // Update dashboard stats
+    if (typeof updateDashboardStats === 'function') {
+      updateDashboardStats();
+    }
+    
+    // Add to activity log
+    addActivity(`Deleted task ID: ${taskId}`);
+    
+    // Show notification
+    showNotification('Task deleted successfully', 'warning');
+  }
+};
+
+function showNotification(message, type) {
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
+    ${message}
+  `;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.classList.add('fade-out');
+    setTimeout(() => notification.remove(), 500);
+  }, 3000);
+}
+
+function renderTasks() {
+  // Implementation would be the same as in the DOMContentLoaded event
+}
+</script>

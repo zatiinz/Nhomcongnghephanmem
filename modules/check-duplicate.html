@@ -1,0 +1,321 @@
+<div class="module-container">
+  <h2><i class="fas fa-clone"></i> Check for Duplicate Questions</h2>
+  
+  <div class="duplicate-check-container">
+    <div class="check-options">
+      <div class="form-group">
+        <label for="checkScope">Check Scope</label>
+        <select id="checkScope" name="checkScope">
+          <option value="all">All Questions</option>
+          <option value="subject">Within Selected Subject</option>
+          <option value="recent">Recently Added Questions</option>
+          <option value="unreviewed">Unreviewed Questions</option>
+        </select>
+      </div>
+      
+      <div class="form-group" id="subjectSelectGroup" style="display: none;">
+        <label for="duplicateSubjectSelect">Select Subject</label>
+        <select id="duplicateSubjectSelect" name="duplicateSubjectSelect">
+          <option value="">-- Select Subject --</option>
+          <!-- Subjects will be loaded from localStorage -->
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="similarityThreshold">Similarity Threshold</label>
+        <input type="range" id="similarityThreshold" name="similarityThreshold" 
+          min="50" max="100" value="80" step="5">
+        <div class="threshold-value">
+          <span id="thresholdValue">80%</span> similarity
+        </div>
+      </div>
+      
+      <button id="checkButton" class="btn btn-primary">
+        <i class="fas fa-search"></i> Run Duplicate Check
+      </button>
+      
+      <div class="check-info">
+        <p><i class="fas fa-info-circle"></i> The system checks for:</p>
+        <ul>
+          <li>Exact text matches</li>
+          <li>Similar questions using AI analysis</li>
+          <li>Questions with the same CLO</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="results-section">
+      <div class="results-header">
+        <h3><i class="fas fa-poll"></i> Results</h3>
+        <div class="results-actions">
+          <button id="exportResults" class="btn btn-sm btn-secondary" disabled>
+            <i class="fas fa-download"></i> Export
+          </button>
+        </div>
+      </div>
+      
+      <div id="duplicateResults">
+        <div class="empty-state">
+          <i class="fas fa-search"></i>
+          <p>Run a duplicate check to see results</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const checkButton = document.getElementById('checkButton');
+  const checkScope = document.getElementById('checkScope');
+  const subjectSelectGroup = document.getElementById('subjectSelectGroup');
+  const duplicateSubjectSelect = document.getElementById('duplicateSubjectSelect');
+  const similarityThreshold = document.getElementById('similarityThreshold');
+  const thresholdValue = document.getElementById('thresholdValue');
+  const resultsDiv = document.getElementById('duplicateResults');
+  const exportBtn = document.getElementById('exportResults');
+  
+  // Load subjects into dropdown
+  const subjects = JSON.parse(localStorage.getItem('subjects') || []);
+  duplicateSubjectSelect.innerHTML = '<option value="">-- Select Subject --</option>' + 
+    subjects.map(sub => 
+      `<option value="${sub.id}">${sub.code} - ${sub.name}</option>`
+    ).join('');
+  
+  // Show/hide subject selector based on scope
+  checkScope.addEventListener('change', () => {
+    subjectSelectGroup.style.display = 
+      checkScope.value === "subject" ? "block" : "none";
+  });
+  
+  // Update threshold display
+  similarityThreshold.addEventListener('input', () => {
+    thresholdValue.textContent = `${similarityThreshold.value}%`;
+  });
+  
+  // Check button click handler
+  checkButton.addEventListener('click', () => {
+    const scope = checkScope.value;
+    const subjectId = duplicateSubjectSelect.value;
+    const threshold = parseInt(similarityThreshold.value);
+    
+    let questions = JSON.parse(localStorage.getItem('questions') || []);
+    
+    // Filter questions based on scope
+    if (scope === "subject" && subjectId) {
+      questions = questions.filter(q => q.subjectId === subjectId);
+    } else if (scope === "recent") {
+      // Get questions from last 7 days
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+      questions = questions.filter(q => new Date(q.createdAt) > oneWeekAgo);
+    } else if (scope === "unreviewed") {
+      questions = questions.filter(q => q.status === 'pending_review');
+    }
+    
+    if (questions.length === 0) {
+      showResultsMessage('No questions found for the selected scope', 'info');
+      exportBtn.disabled = true;
+      return;
+    }
+    
+    // Check for duplicates
+    const duplicates = findDuplicates(questions, threshold);
+    
+    // Display results
+    displayResults(duplicates, threshold);
+    exportBtn.disabled = duplicates.length === 0;
+    
+    // Add to activity log
+    addActivity(`Ran duplicate check (${scope} scope), found ${duplicates.length} duplicates`);
+  });
+  
+  // Export button click handler
+  exportBtn.addEventListener('click', () => {
+    exportResults();
+  });
+  
+  function findDuplicates(questions, threshold) {
+    const seen = {};
+    const duplicates = [];
+    
+    // First pass - exact matches
+    questions.forEach(q => {
+      const normalized = normalizeText(q.text);
+      
+      if (seen[normalized]) {
+        duplicates.push({
+          question: q,
+          reason: 'exact_match',
+          matchingQuestionId: seen[normalized]
+        });
+      } else {
+        seen[normalized] = q.id;
+      }
+    });
+    
+    // Second pass - similar questions (simulated)
+    if (threshold < 100) {
+      questions.forEach(q1 => {
+        questions.forEach(q2 => {
+          if (q1.id !== q2.id && !duplicates.some(d => d.question.id === q1.id)) {
+            // Simulated similarity check (in real app, this would use AI)
+            const similarity = calculateSimilarity(q1.text, q2.text);
+            if (similarity >= threshold) {
+              duplicates.push({
+                question: q1,
+                reason: 'similar_question',
+                similarity: similarity,
+                matchingQuestionId: q2.id
+              });
+            }
+          }
+        });
+      });
+    }
+    
+    return duplicates;
+  }
+  
+  function normalizeText(text) {
+    return text.toLowerCase()
+      .replace(/\s+/g, ' ')
+      .replace(/[^\w\s]/g, '')
+      .trim();
+  }
+  
+  // Simulated similarity calculation
+  function calculateSimilarity(text1, text2) {
+    // In a real app, this would use AI/ML algorithms
+    const words1 = new Set(normalizeText(text1).split(' '));
+    const words2 = new Set(normalizeText(text2).split(' '));
+    
+    const intersection = new Set([...words1].filter(x => words2.has(x)));
+    const union = new Set([...words1, ...words2]);
+    
+    return Math.round((intersection.size / union.size) * 100);
+  }
+  
+  function displayResults(duplicates, threshold) {
+    if (duplicates.length === 0) {
+      showResultsMessage('No duplicate questions found!', 'success');
+      return;
+    }
+    
+    let resultsHTML = `
+      <div class="alert alert-warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        Found ${duplicates.length} potential duplicate(s) at ${threshold}% similarity threshold
+      </div>
+      <div class="duplicates-list">
+        <table class="duplicates-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Question</th>
+              <th>Subject</th>
+              <th>CLO</th>
+              <th>Type</th>
+              <th>Match Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+    `;
+    
+    duplicates.forEach((dup, index) => {
+      const matchingQuestion = getQuestionById(dup.matchingQuestionId);
+      const matchType = dup.reason === 'exact_match' ? 'Exact match' : 
+        `Similar (${dup.similarity}%)`;
+      
+      resultsHTML += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>
+            <div class="question-text">${dup.question.text}</div>
+            <div class="matching-question">
+              <strong>Matches:</strong> ${matchingQuestion?.text || 'Unknown'}
+            </div>
+          </td>
+          <td>${dup.question.subjectName}</td>
+          <td>${dup.question.clo}</td>
+          <td>${dup.question.type}</td>
+          <td>${matchType}</td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn btn-sm btn-danger" onclick="deleteQuestion('${dup.question.id}')">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+              <button class="btn btn-sm btn-secondary" onclick="flagQuestion('${dup.question.id}')">
+                <i class="fas fa-flag"></i> Flag
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    });
+    
+    resultsHTML += `
+          </tbody>
+        </table>
+      </div>
+    `;
+    
+    resultsDiv.innerHTML = resultsHTML;
+  }
+  
+  function getQuestionById(id) {
+    const questions = JSON.parse(localStorage.getItem('questions') || []);
+    return questions.find(q => q.id === id);
+  }
+  
+  function showResultsMessage(message, type) {
+    resultsDiv.innerHTML = `
+      <div class="alert alert-${type}">
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+        ${message}
+      </div>
+    `;
+  }
+  
+  function exportResults() {
+    // In a real app, this would generate a CSV or PDF
+    alert('Export functionality would generate a report in a real application');
+    addActivity('Exported duplicate check results');
+  }
+});
+
+// Global functions
+window.deleteQuestion = function(questionId) {
+  let questions = JSON.parse(localStorage.getItem('questions') || []);
+  questions = questions.filter(q => q.id !== questionId);
+  localStorage.setItem('questions', JSON.stringify(questions));
+  
+  // Refresh the results
+  document.getElementById('checkButton').click();
+  
+  // Update dashboard stats
+  if (typeof updateDashboardStats === 'function') {
+    updateDashboardStats();
+  }
+  
+  // Add to activity log
+  addActivity(`Deleted question ID: ${questionId}`);
+};
+
+window.flagQuestion = function(questionId) {
+  let questions = JSON.parse(localStorage.getItem('questions') || []);
+  const questionIndex = questions.findIndex(q => q.id === questionId);
+  
+  if (questionIndex !== -1) {
+    questions[questionIndex].status = 'flagged';
+    localStorage.setItem('questions', JSON.stringify(questions));
+    
+    // Refresh the results
+    document.getElementById('checkButton').click();
+    
+    // Add to activity log
+    addActivity(`Flagged question ID: ${questionId}`);
+  }
+};
+</script>
