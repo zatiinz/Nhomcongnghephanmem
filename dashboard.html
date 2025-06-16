@@ -3,63 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QBCA Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>QBCA - Bảng điều khiển</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div class="dashboard-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <a href="#" class="brand-logo">
-          <div class="brand-icon">Q</div>
-          <div class="brand-text">QBCA</div>
+<body class="dashboard-page">
+  <aside class="sidebar">
+    <header class="sidebar-header">
+      <a href="dashboard.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fas fa-book-open"></i>
+        </div>
+        <h1 class="brand-text">QBCA</h1>
+      </a>
+    </header>
+    
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" onclick="loadPage('dashboard-home')" class="nav-link active">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Bảng điều khiển</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" onclick="loadPage('create-subject')" class="nav-link">
+            <i class="fas fa-plus-circle nav-icon"></i>
+            <span class="nav-text">Tạo môn học</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" onclick="loadPage('upload-question')" class="nav-link">
+            <i class="fas fa-cloud-upload-alt nav-icon"></i>
+            <span class="nav-text">Tải lên câu hỏi</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" onclick="loadPage('check-duplicates')" class="nav-link">
+            <i class="fas fa-clone nav-icon"></i>
+            <span class="nav-text">Kiểm tra trùng lặp</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" onclick="loadPage('task-assign')" class="nav-link">
+            <i class="fas fa-tasks nav-icon"></i>
+            <span class="nav-text">Phân công công việc</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <footer class="sidebar-footer">
+      <div class="user-profile">
+        <img src="https://ui-avatars.com/api/?name=User+Name&background=4361ee&color=fff" alt="User Avatar" class="user-avatar">
+        <div class="user-info">
+          <span class="user-name" id="currentUser">Người dùng</span>
+          <span class="user-role">Quản trị viên</span>
+        </div>
+        <a href="login.html" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i>
         </a>
       </div>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <span class="nav-icon">📊</span>
-              <span class="nav-label">Bảng điều khiển</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <span class="nav-icon">📁</span>
-              <span class="nav-label">Câu hỏi</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <span class="nav-icon">🔍</span>
-              <span class="nav-label">Kiểm tra trùng</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <span class="nav-icon">⚙️</span>
-              <span class="nav-label">Cài đặt</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+    </footer>
+  </aside>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <header class="main-header">
-        <h1>Bảng điều khiển</h1>
-      </header>
-      <section class="main-section">
-        <div class="card">
-          <h2>Chào mừng, Zatinz!</h2>
-          <p>Hãy bắt đầu kiểm tra trùng lặp ngân hàng câu hỏi của bạn.</p>
-          <button class="btn">Bắt đầu kiểm tra</button>
+  <main class="main-content">
+    <header class="topbar">
+      <div class="search-bar">
+        <i class="fas fa-search search-icon"></i>
+        <input type="search" class="search-input" placeholder="Tìm kiếm...">
+      </div>
+      
+      <div class="topbar-actions">
+        <button class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </button>
+        
+        <div class="user-profile">
+          <img src="https://ui-avatars.com/api/?name=User+Name&background=4361ee&color=fff" alt="User Avatar" class="user-avatar">
+          <span class="user-name">Người dùng</span>
+          <i class="fas fa-chevron-down user-dropdown"></i>
         </div>
-      </section>
-    </main>
-  </div>
+      </div>
+    </header>
+    
+    <div class="content-area">
+      <div id="content" class="container">
+        <!-- Dynamic content will be loaded here -->
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
