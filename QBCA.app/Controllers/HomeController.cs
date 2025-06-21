@@ -15,7 +15,8 @@ namespace WeBQBCA.Controllers
     public class HomeController : Controller
     {
         private readonly QbcaDbContext _context;
-
+        
+       
         public HomeController(QbcaDbContext context)
         {
             _context = context;
@@ -25,6 +26,7 @@ namespace WeBQBCA.Controllers
         {
             return View();
         }
+         //hiển thị folm Đăng ký người dùng
         //  HTTP GET/HOME/Dangky (hiển thị form đăng ký)
         public IActionResult Dangky()
         {
@@ -36,6 +38,10 @@ namespace WeBQBCA.Controllers
         {
             if (ModelState.IsValid)
             {
+                var existringUser = _context.User.FirstOrDefault(u => u.Username == u.Username);
+                if(existringUser != null){
+                Viewbag.Error =  "Tài khoản đã tồn tại";
+                }
                 _context.Users.Add(user);
                 _context.SaveChanges();
                 return RedirectToAction("Dangnhap");
