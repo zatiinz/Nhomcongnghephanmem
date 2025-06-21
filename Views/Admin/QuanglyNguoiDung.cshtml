@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WeBQBCA.Data.User>
+
+@{
+    ViewData["Title"] = "Quản lý người dùng";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Danh sách người dùng</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Subject</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Role</td>
+                <td>@user.Subject</td>
+                <td>
+                    <a asp-action="Edit" asp-route-UserId="@user.UserId">Sửa</a> |
+                    <a asp-action="Delete" asp-route-UserId="@user.UserId">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Thêm người dùng</a>
+
+

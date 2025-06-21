@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_LgingLgout.cshtml";
+    var username = Context.Session.GetString("Username") ?? "Khách";
+    var role = Context.Session.GetString("Role") ?? "";
+}
+
+<div class="container mt-5">
+    <h2>Chào mừng @username</h2>
+
+    @if (role == "Admin")
+    {
+        <p>Bạn đang đăng nhập với quyền <strong>Admin</strong>.</p>
+        <a class="btn btn-primary" asp-controller="Admin" asp-action="QuanglyNguoiDung">Quản lý người dùng</a>
+    }
+    else if (role == "GiangVien")
+    {
+        <p>Bạn đang đăng nhập với quyền <strong>Giảng viên</strong>.</p>
+        <a class="btn btn-success" asp-controller="GiangVien" asp-action="TaiCauHoi">Tải câu hỏi</a>
+    }
+    else
+    {
+        <p>Vui lòng <a asp-controller="Home" asp-action="Dangnhap">đăng nhập</a> để sử dụng hệ thống.</p>
+    }
+</div>

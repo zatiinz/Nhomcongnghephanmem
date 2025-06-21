@@ -1,0 +1,41 @@
+﻿
+@model IEnumerable<WeBQBCA.Data.Question>
+
+@{
+    ViewData["Title"] = "Danh sách câu hỏi";
+    Layout = "~/Views/Shared/_GiangVien.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm câu hỏi</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>QuestionId</th>
+            <th>QuestionText</th>
+            <th>SubjectId</th>
+            <th>DifficultyLevel</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.QuestionId</td>
+                <td>@item.QuestionText</td>
+                <td>@item.SubjectId</td>
+                <td>@item.DifficultyLevel</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.QuestionId">Chi tiết</a> |
+                    <a asp-action="Edit" asp-route-id="@item.QuestionId">Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@item.QuestionId">Xoá</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

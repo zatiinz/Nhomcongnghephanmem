@@ -1,0 +1,17 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Tải câu hỏi";
+    Layout = "~/Views/Shared/GiangVien.cshtml";
+}
+
+<h2>Tải danh sách câu hỏi</h2>
+
+<ul>
+    <li><a asp-action="TaiExcel">Tải file Excel (.xlsx)</a></li>
+    <li><a asp-action="TaiTxt">Tải file văn bản (.txt)</a></li>
+    <li><a asp-action="TaiCsv">Tải file CSV (.csv)</a></li>
+    <li><a asp-action="TaiJson">Tải file JSON (.json)</a></li>
+</ul>
+

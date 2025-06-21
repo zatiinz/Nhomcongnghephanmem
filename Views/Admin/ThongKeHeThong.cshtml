@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WeBQBCA.Data.User>
+@{
+    ViewData["Title"] = "Thống kê Hệ Thống";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">📊 Thống kê hệ thống</h2>
+
+    <div class="row text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card border-primary shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">👤 Số người dùng</h5>
+                    <p class="card-text fs-4 fw-bold text-primary">123</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-success shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">📚 Số câu hỏi</h5>
+                    <p class="card-text fs-4 fw-bold text-success">456</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-warning shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🔁 Câu hỏi bị trùng</h5>
+                    <p class="card-text fs-4 fw-bold text-warning">23</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-danger shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🕒 Lượt kiểm tra</h5>
+                    <p class="card-text fs-4 fw-bold text-danger">78</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-end mt-4">
+        <a asp-action="Index" class="btn btn-secondary">⬅ Quay lại trang chủ Admin</a>
+    </div>
+</div>
+
