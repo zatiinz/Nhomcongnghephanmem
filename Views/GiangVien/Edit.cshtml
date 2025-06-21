@@ -1,6 +1,3 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @model WeBQBCA.Data.Question
 
 @{
@@ -8,22 +5,40 @@
     Layout = "~/Views/Shared/_GiangVien.cshtml";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container mt-4">
+    <h2 class="mb-4">Chỉnh sửa câu hỏi</h2>
 
-<form asp-action="Edit">
-    <input type="hidden" asp-for="QuestionId" />
-    <div class="form-group">
-        <label asp-for="SubjectId"></label>
-        <input asp-for="SubjectId" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="QuestionText"></label>
-        <textarea asp-for="QuestionText" class="form-control"></textarea>
-    </div>
-    <div class="form-group">
-        <label asp-for="DifficultyLevel"></label>
-        <input asp-for="DifficultyLevel" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Cập nhật</button>
-    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
-</form>
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="QuestionId" />
+
+        <div class="mb-3">
+            <label asp-for="QuestionText" class="form-label"></label>
+            <textarea asp-for="QuestionText" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="QuestionText" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SubjectId" class="form-label">Mã môn học</label>
+            <input asp-for="SubjectId" class="form-control" />
+            <span asp-validation-for="SubjectId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DifficultyLevel" class="form-label">Độ khó</label>
+            <select asp-for="DifficultyLevel" class="form-select">
+                <option value="">-- Chọn độ khó --</option>
+                <option value="Dễ">Dễ</option>
+                <option value="Trung bình">Trung bình</option>
+                <option value="Khó">Khó</option>
+            </select>
+            <span asp-validation-for="DifficultyLevel" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
