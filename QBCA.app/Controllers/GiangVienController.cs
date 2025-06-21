@@ -1,5 +1,6 @@
 using AspNetCoreGeneratedDocument;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Identity.Client;
 using System.Text;
@@ -30,28 +31,39 @@ namespace WeBQBCA.Controllers
         {
             return View();
         }
-        //Post: ->Thêm câu hỏi vào
+        //Post: ->Thêm câu hỏi
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Question question)
         {
             if (ModelState.IsValid)
             {
-                question.CreatedDate = DateTime.Now;
-                //mặc định chưa kiểm tra:
-                question.IsDuplicate = false;
-                _context.Questions.Add(question);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                var normalizedTexd = questioon.QuestionText.Trim().ToLower();
+                var isĐuplicate = _context.Question.Any(q.QuestionText.Trim() == normalizedText);
+                if(isDuplicate){
+                        question.IsDuplicate = true;
+                        _context.Questions.Add(question);
+                        _context.SaveChanges();
+                        return RedirecrToAction(nameof(Index));
+                        }
+                        question.CreateData = DateTime.Now;
+                        question.IsDuplicate = false;
+                        
+                        _context.Questions.Add(question);
+                        _context.SaveChanges();
+                        return RedirectToAction(nameof(Index));
 
             }
             return View(question);
         }
         //Get: chỉnh sữa câu hỏi
         //Gọi id ánh sạ id với Questionid trong bản data Question:
-        public IActionResult Edit(int id)
+        public Asyn<IActionResult> Edit(int id)
         {
-            var question = _context.Questions.Find(id);
+            if(id == null)
+                return NotFound();
+                
+            var question = _context.Questions.FindAsync(id);
             if (question == null)
                 return NotFound();
             return View(question);
@@ -84,7 +96,7 @@ namespace WeBQBCA.Controllers
         {
             var question = _context.Questions.Find(id);
             if (question == null)
-                return NotFound();
+                 return NotFound();
             return View(question);
         }
         //Post - Xoá câu hỏi
@@ -104,6 +116,32 @@ namespace WeBQBCA.Controllers
         public IActionResult TaiCauHoi()
         {
             return View();
+        }
+        //Post: kiểm tra trùng lặp câu hỏi
+        [HttpPost]
+        public IActionResult KiemTraTrungLap(string cauHoiMoi){
+            if(string.IsNullOrWhiteSpac(cauHoiMoi)){
+                ViewBag.Message = "Vui lòng nhập lại nội dung câu hỏi ";
+                return  View();
+            }
+            var trung = _context.Question.FirstOrDefault(q.QuestionText.Trim().ToLower() == cauHoiMoi.Trim().ToLower());
+            if(trung != null){
+               ViewBag.Message = "Câu hỏi đã tồn tại trong hệ thống";
+               
+            }
+            else{
+               ViewBag.Message = "Vâu hỏi chưa tồn tại, ban có thể sử dụng";
+            }
+            return View();
+            
+        }
+        //Hiển thị Folm lịch sử câu hỏi
+        public IActionResult (){
+            var username = HttpContext.Session.Getsting("Username");
+
+            //Tìm lịch sử các câu hỏi do người dùng tạo
+            var historis = _context.QuestionHistories.Include(q => q.ModifiedByl).Include(q => q.ModifiesBynavigation).Where(q => q.ModifiedByl.Usename == username).OrderByDescending(q  =>  q.ModifiedData).ToList();
+            return View(histories);
         }
         //các định dạng hổ trợ Tải Câu hỏi
         // Tải file Excel (.xlsx)
