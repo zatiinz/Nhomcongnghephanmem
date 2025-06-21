@@ -1,6 +1,3 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @model WeBQBCA.Data.Question
 
 @{
@@ -8,15 +5,40 @@
     Layout = "~/Views/Shared/_GiangVien.cshtml";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container mt-4">
+    <h2 class="mb-4 text-danger">Xác nhận xoá câu hỏi</h2>
 
-<h4>Bạn có chắc muốn xoá câu hỏi này không?</h4>
-<div>
-    <p><strong>QuestionText:</strong> @Model.QuestionText</p>
-    <form asp-action="DeleteConfirmed">
+    <div class="alert alert-warning">
+        <strong>Bạn có chắc chắn muốn xoá câu hỏi sau không?</strong>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nội dung câu hỏi:</label>
+        <div class="form-control-plaintext">@Model.QuestionText</div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Môn học:</label>
+        <div class="form-control-plaintext">@Model.SubjectId</div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Độ khó:</label>
+        <div class="form-control-plaintext">@Model.DifficultyLevel</div>
+    </div>
+
+    <form asp-action="DeleteConfirmed" method="post">
         <input type="hidden" asp-for="QuestionId" />
-        <button type="submit" class="btn btn-danger">Xoá</button>
-        <a asp-action="Index" class="btn btn-secondary">Huỷ</a>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash-alt me-1"></i> Xoá
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-1"></i> Huỷ
+            </a>
+        </div>
     </form>
 </div>
-
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
