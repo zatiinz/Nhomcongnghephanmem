@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WeBQBCA.Data.QuestionHistory>
+
+@{
+    ViewData["Title"] = "Lịch sử chỉnh sửa";
+    Layout = "~/Views/Shared/_GiangVien.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Lịch sử chỉnh sửa câu hỏi</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-light text-center">
+            <tr>
+                <th>#</th>
+                <th>Câu hỏi gốc</th>
+                <th>Câu hỏi đã chỉnh</th>
+                <th>Người chỉnh sửa</th>
+                <th>Thời gian</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                int index = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@index</td>
+                        <td>@item.OldText</td>
+                        <td>@item.NewText</td>
+                        <td>@item.ModifiedBy1.Username</td>
+                        <td>@item.ModifiedData?.ToString("dd/MM/yyyy HH:mm")</td>
+                    </tr>
+                    index++;
+                }
+            }
+            else
+            {
+                <tr><td colspan="5" class="text-center text-muted">Không có lịch sử chỉnh sửa nào.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

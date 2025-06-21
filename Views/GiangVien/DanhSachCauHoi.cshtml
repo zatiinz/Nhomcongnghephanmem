@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WeBQBCA.Data.Question>
+@{
+    ViewData["Title"] = "Danh sách câu hỏi đã tải lên";
+    Layout = "~/Views/Shared/_GiangVien.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">@ViewData["Title"]</h2>
+        <a asp-action="Create" class="btn btn-success">
+            <i class="fas fa-plus-circle me-1"></i> Thêm câu hỏi
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 5%;">ID</th>
+                        <th style="width: 45%;">Nội dung câu hỏi</th>
+                        <th style="width: 20%;">Môn học</th>
+                        <th style="width: 15%;">Độ khó</th>
+                        <th style="width: 15%;">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.QuestionId</td>
+                                <td>@item.QuestionText</td>
+                                <td>@item.SubjectId</td>
+                                <td>@item.DifficultyLevel</td>
+                                <td>
+                                    <a class="btn btn-sm btn-warning me-1" asp-action="Edit" asp-route-id="@item.QuestionId">
+                                        <i class="fas fa-edit"></i> Sửa
+                                    </a>
+                                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.QuestionId">
+                                        <i class="fas fa-trash-alt"></i> Xoá
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center text-danger">Chưa có câu hỏi nào.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
