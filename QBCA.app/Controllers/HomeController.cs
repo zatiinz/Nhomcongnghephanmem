@@ -6,8 +6,6 @@ using System.Diagnostics;
 using WeBQBCA.Attributes;
 using WeBQBCA.Models;
 using WeBQBCA.Data;
-using System.Runtime.Intrinsics.X86;
-using AspNetCoreGeneratedDocument;
 
 
 namespace WeBQBCA.Controllers
@@ -30,24 +28,40 @@ namespace WeBQBCA.Controllers
         //  HTTP GET/HOME/Dangky (hiển thị form đăng ký)
         public IActionResult Dangky()
         {
-            return View();
+            return View(new RegisterViewModel());
         }
+        // Sử lý đăng ký người dùng
         //  HTTP Post/HOME/Dangky
         [HttpPost]
-        public IActionResult Dangky(WeBQBCA.Data.User user)//CHỈNH
+        public IActionResult Dangky(RegisterViewModel model)//CHỈNH
         {
             if (ModelState.IsValid)
             {
-                var existringUser = _context.User.FirstOrDefault(u => u.Username == u.Username);
-                if(existringUser != null){
-                Viewbag.Error =  "Tài khoản đã tồn tại";
-                }
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return RedirectToAction("Dangnhap");
+                ViewBag.ModelErrors = "Dữ liệu không hợp lệ. Vui lòng kiểm tra lại.";
+                return View(model);
             }
-            return View(user);
-        }
+            // Không cho mật khẩu trùng với tên đăng nhập
+            if (model.Password == model.Username)
+            {
+                ViewBag.Error = "Mật khẩu không được trùng với tên đăng nhập.";
+                return View(model);
+            }
+
+            // Tạo user mới
+             var user = new User
+            {
+            Username = model.Username,
+            Password = model.Password,
+            Role = model.Role,
+            Subject = model.Subject
+            };
+
+             _context.Users.Add(user);
+             _context.SaveChanges();
+
+             TempData["Success"] = "Đăng ký thành công!";
+             return RedirectToAction("DangNhap");
+         }
         
         //  HTTP GET/HOME/DanNhap (hiển thị form đăng nhập)
         public IActionResult Dangnhap()
