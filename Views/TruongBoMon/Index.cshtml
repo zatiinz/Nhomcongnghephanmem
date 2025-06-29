@@ -1,0 +1,107 @@
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Trang chủ Trưởng môn học";
+    Layout = "~/Views/Shared/_TruongBoMon.cshtml"; // layout riêng nếu có
+    var username = HttpContextAccessor.HttpContext?.Session.GetString("Username") ?? "Trưởng môn học";
+    var role = HttpContextAccessor.HttpContext?.Session.GetString("Role") ?? "";
+}
+
+<main class="main-content">
+    <header class="topbar">
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="search" class="search-input" placeholder="Tìm kiếm...">
+        </div>
+
+        <div class="topbar-actions">
+            <button class="notification-btn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=@username&background=0a9396&color=fff" alt="User Avatar" class="user-avatar">
+                <span class="user-name">@username</span>
+                <i class="fas fa-chevron-down user-dropdown"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-area">
+        <div id="content" class="container">
+            <div class="welcome-section text-center mb-5">
+                <h2>Chào mừng @username đến với khu vực Trưởng môn học</h2>
+                <p class="text-muted">Bạn đang đăng nhập với quyền <strong>@role</strong></p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="fas fa-tasks fa-2x mb-2 text-primary"></i>
+                            <h5 class="card-title">Thông báo nhiệm vụ</h5>
+                            <p class="card-text">Xem các nhiệm vụ được phân công.</p>
+                            <a asp-action="ThongBaoNhiemVu" asp-controller="TruongBoMon" class="btn btn-outline-primary btn-sm">Xem thông báo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="fas fa-user-cog fa-2x mb-2 text-warning"></i>
+                            <h5 class="card-title">Phân công giảng viên</h5>
+                            <p class="card-text">Phân công nhiệm vụ cho giảng viên.</p>
+                            <a asp-action="PhanCongNhiemVu" asp-controller="TruongBoMon" class="btn btn-outline-warning btn-sm">Phân công</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="fas fa-upload fa-2x mb-2 text-success"></i>
+                            <h5 class="card-title">Thông báo câu hỏi đã tải</h5>
+                            <p class="card-text">Xem câu hỏi giảng viên đã tải lên.</p>
+                            <a asp-action="ThongBaoCauHoi" asp-controller="TruongBoMon" class="btn btn-outline-success btn-sm">Xem câu hỏi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="fas fa-file-upload fa-2x mb-2 text-info"></i>
+                            <h5 class="card-title">Nộp bài kiểm tra</h5>
+                            <p class="card-text">Nộp bài thi để hệ thống kiểm tra.</p>
+                            <a asp-action="NopBaiThi" asp-controller="TruongBoMon" class="btn btn-outline-info btn-sm">Nộp bài</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="fas fa-exclamation-triangle fa-2x mb-2 text-danger"></i>
+                            <h5 class="card-title">Thông báo câu hỏi trùng</h5>
+                            <p class="card-text">Nhận cảnh báo câu hỏi bị trùng lặp.</p>
+                            <a asp-action="ThongBaoTrungLap" asp-controller="TruongBoMon" class="btn btn-outline-danger btn-sm">Xem cảnh báo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="fas fa-check-circle fa-2x mb-2 text-success"></i>
+                            <h5 class="card-title">Phê duyệt danh sách</h5>
+                            <p class="card-text">Kiểm tra và phê duyệt câu hỏi cuối cùng.</p>
+                            <a asp-action="PheDuyetDanhSach" asp-controller="TruongBoMon" class="btn btn-outline-success btn-sm">Phê duyệt</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
