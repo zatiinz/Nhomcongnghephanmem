@@ -1,0 +1,272 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    // Lấy thông tin người dùng từ Session
+    var username = HttpContextAccessor.HttpContext?.Session.GetString("Username") ?? "Trưởng Bộ Môn";
+    var role = HttpContextAccessor.HttpContext?.Session.GetString("Role") ?? "Trưởng Bộ Môn";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - QBCA Trưởng Bộ Môn</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/style.css" />
+    <style>
+        /* CSS được cung cấp từ _GiangVien.cshtml, đảm bảo các class này tồn tại trong style.css hoặc được định nghĩa ở đây */
+        body.dashboard-page {
+            display: flex;
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1e293b;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        .sidebar-header {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+
+        .sidebar-nav {
+            flex-grow: 1;
+            padding: 1rem;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 1rem;
+        }
+
+        .nav-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem; /* Thêm padding để dễ click */
+            border-radius: 4px; /* Thêm bo tròn */
+        }
+
+            .nav-link.active,
+            .nav-link:hover {
+                color: #fff;
+                font-weight: bold;
+                background-color: #334155; /* Highlight khi hover/active */
+            }
+
+        .nav-icon {
+            margin-right: 10px;
+        }
+
+        .sidebar-footer {
+            padding: 1rem;
+            border-top: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            border-radius: 50%;
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+            margin-left: 8px;
+            outline: none;
+        }
+
+        .notification-btn {
+            position: relative;
+            background: none;
+            border: none;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 10px;
+            border-radius: 50%;
+            padding: 2px 5px;
+        }
+
+        .content-area {
+            padding: 2rem;
+            flex-grow: 1; /* Để content chiếm hết chiều cao còn lại */
+        }
+        /* Styling cho các card trong Index.cshtml */
+        .card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .btn-sm {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8em;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="dashboard-page">
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            <a href="#" class="brand-logo">
+                <div class="brand-icon"><i class="fas fa-book-open"></i></div>
+                <h1 class="brand-text">QBCA</h1>
+            </a>
+        </header>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a asp-controller="TruongBoMon" asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span class="nav-text">Trang chủ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="TruongBoMon" asp-action="PhanCongNhiemVu" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "PhanCongNhiemVu" ? "active" : "")">
+                        <i class="fas fa-tasks nav-icon"></i>
+                        <span class="nav-text">Phân công nhiệm vụ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="TruongBoMon" asp-action="PheDuyetDanhSach" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "PheDuyetDanhSach" ? "active" : "")">
+                        <i class="fas fa-check-double nav-icon"></i>
+                        <span class="nav-text">Phê duyệt câu hỏi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="TruongBoMon" asp-action="ThongBaoCauHoi" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "ThongBaoCauHoi" ? "active" : "")">
+                        <i class="fas fa-upload nav-icon"></i>
+                        <span class="nav-text">Câu hỏi đã tải lên</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="TruongBoMon" asp-action="NopBaiThi" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "NopBaiThi" ? "active" : "")">
+                        <i class="fas fa-file-upload nav-icon"></i>
+                        <span class="nav-text">Nộp bài thi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="TruongBoMon" asp-action="ThongBaoTrungLap" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "ThongBaoTrungLap" ? "active" : "")">
+                        <i class="fas fa-exclamation-triangle nav-icon"></i>
+                        <span class="nav-text">Thông báo trùng lặp</span>
+                        S
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="TruongBoMon" asp-action="DanhSachNhiemVu" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "DanhSachNhiemVu" ? "active" : "")">
+                        <i class="fas fa-clipboard-list nav-icon"></i>
+                        <span class="nav-text">Danh sách nhiệm vụ</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=@username&background=4361ee&color=fff" alt="User Avatar" class="user-avatar" />
+                <div class="user-info">
+                    <span class="user-name">@username</span><br />
+                    <span class="user-role">@role</span>
+                </div>
+            </div>
+            <form asp-controller="Home" asp-action="Dangxuat" method="post" class="ml-auto">
+                <button type="submit" class="logout-btn" title="Đăng xuất">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </form>
+        </footer>
+    </aside>
+
+    <div class="main-content">
+        @RenderBody()
+    </div>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
