@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WeBQBCA.Data.Question>
+
+@{
+    ViewData["Title"] = "Thông Báo Câu Hỏi Đã Tải Lên";
+    Layout = "~/Views/Shared/_TruongBoMon.cshtml";
+}
+
+<h2>Thông Báo Câu Hỏi Đã Tải Lên</h2>
+
+@if (!Model.Any())
+{
+    <p>Không có câu hỏi mới nào được tải lên.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã câu hỏi</th>
+                <th>Môn học</th>
+                <th>Người tạo</th>
+                <th>Ngày tạo</th>
+                <th>Nội dung</th>
+                <th>Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var q in Model)
+            {
+                <tr>
+                    <td>@q.QuestionId</td>
+                    <td>@q.Subject?.SubjectName</td>
+                    <td>@q.CreatedByNavigation?.Username</td>
+                    <td>@q.CreatedDate?.ToString("dd/MM/yyyy")</td>
+                    <td>@q.QuestionText</td>
+                    <td>@q.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
