@@ -1,0 +1,15 @@
+﻿@model List<WeBQBCA.Data.Question>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.QuestionId</td>
+        <td>@item.QuestionText</td>
+        <td>@(item.CreatedByNavigation?.Username ?? "Không rõ")</td>
+        <td>@item.CreatedDate?.ToString("dd/MM/yyyy")</td>
+        <td>
+            <button class="btn btn-success btn-sm" onclick="approveQuestion(@item.QuestionId)">Phê duyệt</button>
+            <button class="btn btn-danger btn-sm" onclick="rejectQuestion(@item.QuestionId)">Từ chối</button>
+        </td>
+    </tr>
+}

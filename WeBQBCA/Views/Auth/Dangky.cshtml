@@ -1,0 +1,76 @@
+﻿@model WeBQBCA.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Đăng ký";
+    Layout = "~/Views/Shared/_LgingLgout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/register.css" />
+}
+
+<div class="register-wrapper">
+    <div class="register-card">
+        <div class="register-header">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>QBCA</span>
+            </div>
+            <h2>Đăng ký tài khoản</h2>
+        </div>
+
+        <form asp-action="Dangky" method="post" class="register-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger text-center mb-3"></div>
+
+            <div class="form-group">
+                <label asp-for="Username">Tên đăng nhập</label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+                </div>
+                <span asp-validation-for="Username" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Mật khẩu</label>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu" />
+                </div>
+                <span asp-validation-for="Password" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Role">Vai trò</label>
+                <div class="input-group">
+                    <i class="fas fa-user-tag"></i>
+                    <select asp-for="Role" class="form-control">
+                        <option value="">-- Chọn vai trò --</option>
+                        <option value="Admin">Admin(Quảng trị viên)</option>
+                        <option value="GiangVien">Giảng viên</option>
+                        <option value="TruongBoMon">Trưởng Bộ Môn</option>
+                        <option value="NhanVienR_D">Nhân Viên R_D</option>
+                        <option value="TruongPhongKT">Trưỡng phòng Khoả thi(Giảng viên)</option>
+                        <option value="TruongKhoa">Trưỡng Khoa(Giảng viên)</option>
+                    </select>
+                </div>
+                <span asp-validation-for="Role" class="error-message"></span>
+            </div>
+
+
+
+            <button type="submit" class="register-btn">
+                <i class="fas fa-user-plus"></i> Đăng ký
+            </button>
+        </form>
+
+        <div class="register-footer">
+            <p>Đã có tài khoản? <a asp-action="Dangnhap">Đăng nhập</a></p>
+            <div class="copyright">
+                © 2025 QBCA - Hệ thống ngân hàng câu hỏi
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

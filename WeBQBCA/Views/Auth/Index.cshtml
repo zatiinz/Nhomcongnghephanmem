@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_LgingLgout.cshtml";
+    var username = Context.Session.GetString("Username") ?? "Khách";
+    var role = Context.Session.GetString("Role") ?? "";
+}
+
+<div class="container mt-5">
+    <h2>Chào mừng @username</h2>
+
+    @if (role == "Admin")
+    {
+        <p>Bạn đang đăng nhập với quyền <strong>Admin</strong>.</p>
+        <a class="btn btn-primary" asp-controller="Admin" asp-action="QuanLyNguoiDung">Quản lý người dùng</a>
+    }
+    else if (role == "GiangVien")
+    {
+        <p>Bạn đang đăng nhập với quyền <strong>Giảng viên</strong>.</p>
+        <a class="btn btn-success" asp-controller="GiangVien" asp-action="TaiCauHoi">Tải câu hỏi</a>
+    }
+    else if (role == "NhanVienR_D")
+    {
+        <p>Bạn đang đăng nhập với quyền <strong>Nhân Viên R_D</strong>.</p>
+        <a class="btn btn-success" asp-controller="NhanVienR_D" asp-action="TaoCauHoi">Phê Duyệt</a>
+    }
+    else if (role == "TruongKhoa")
+    {
+        <p>Bạn đang đăng nhập với quyền <strong>Trưởng Khoa</strong>.</p>
+        <a class="btn btn-success" asp-controller="TruongKhoa" asp-action="TaiCauHoi">Tải câu hỏi</a>
+    }
+    else if (role == "TruongPhong")
+    {
+        <p>Bạn đang đăng nhập với quyền <strong>Trưởng Phòng</strong>.</p>
+        <a class="btn btn-success" asp-controller="TruongPhongKT" asp-action="TaiCauHoi">Tải câu hỏi</a>
+    }
+    else if (role == "TruongBoMon")
+    {
+        <p>Bạn đang đăng nhập với quyền <strong>Trưởng Bộ Môn</strong>.</p>
+        <a class="btn btn-success" asp-controller="TruongBoMon" asp-action="TaiCauHoi">Tải câu hỏi</a>
+    }
+    else
+    {
+        <p>Vui lòng <a asp-controller="Auth" asp-action="DangNhap">đăng nhập</a> để sử dụng hệ thống.</p>
+    }
+</div>

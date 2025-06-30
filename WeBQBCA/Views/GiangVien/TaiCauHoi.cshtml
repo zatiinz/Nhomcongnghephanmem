@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Tải câu hỏi";
+    Layout = "~/Views/Shared/_GiangVien.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Tải danh sách câu hỏi</h2>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Excel (.xlsx)</h5>
+                    <p class="card-text">Tải danh sách câu hỏi ở định dạng Excel.</p>
+                    <a asp-action="TaiExcel" class="btn btn-primary">
+                        <i class="fas fa-file-excel me-2"></i>Tải Excel
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Văn bản (.txt)</h5>
+                    <p class="card-text">Tải danh sách câu hỏi ở định dạng văn bản thuần.</p>
+                    <a asp-action="TaiTxt" class="btn btn-secondary">
+                        <i class="fas fa-file-alt me-2"></i>Tải TXT
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">CSV (.csv)</h5>
+                    <p class="card-text">Tải danh sách câu hỏi ở định dạng CSV.</p>
+                    <a asp-action="TaiCsv" class="btn btn-warning text-white">
+                        <i class="fas fa-file-csv me-2"></i>Tải CSV
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">JSON (.json)</h5>
+                    <p class="card-text">Tải danh sách câu hỏi ở định dạng JSON.</p>
+                    <a asp-action="TaiJson" class="btn btn-dark">
+                        <i class="fas fa-code me-2"></i>Tải JSON
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

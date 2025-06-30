@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Trang quản trị Admin";
+    Layout = "~/Views/Shared/_Admin.cshtml"; // đường dẩn Giao diện chính
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+@if (currentController == "Admin" && currentAction == "Index")
+{
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark">
+        <div class="row py-2 px-lg-5">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center text-white">
+                    <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                    <small class="px-3">|</small>
+                    <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white px-2" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-white px-2" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-white px-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-white px-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-white pl-2" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar Start -->
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12 text-center mb-4">
+            <h2>Chào mừng @Context.Session.GetString("Username") đến với trang quản trị</h2>
+            <p class="text-muted">Bạn đang đăng nhập với quyền <strong>@Context.Session.GetString("Role")</strong></p>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Quản lý người dùng</h5>
+                    <p class="card-text">Xem, chỉnh sửa hoặc xóa tài khoản người dùng.</p>
+                    <a asp-controller="Admin" asp-action="QuanglyNguoiDung" class="btn btn-primary">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Cấu hình hệ thống</h5>
+                    <p class="card-text">Quản lý các thiết lập hệ thống của QBCA.</p>
+                    <a asp-controller="Admin" asp-action="CauHinhHeThong" class="btn btn-success">Cấu hình</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Thống kê hệ thống</h5>
+                    <p class="card-text">Xem tổng quan các thống kê về người dùng và câu hỏi.</p>
+                    <a asp-controller="Admin" asp-action="ThongKeHeThong" class="btn btn-success">Xem Thống kê</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

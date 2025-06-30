@@ -1,0 +1,135 @@
+﻿@model WeBQBCA.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <h2><i class="fas fa-user-plus"></i> Đăng ký tài khoản</h2>
+        </div>
+
+        <form asp-action="Dangky" method="post" class="register-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger text-center mb-3"></div>
+
+            <div class="form-group">
+                <label asp-for="Username" class="form-label">
+                    <i class="fas fa-user"></i> Tên đăng nhập
+                </label>
+                <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+                <span asp-validation-for="Username" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">
+                    <i class="fas fa-lock"></i> Mật khẩu
+                </label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Role" class="form-label">
+                    <i class="fas fa-user-tag"></i> Vai trò
+                </label>
+                <select asp-for="Role" class="form-control">
+                    <option value="">-- Chọn vai trò --</option>
+                    <option value="Admin">Admin (Quản trị viên)</option>
+                    <option value="GiangVien">Giảng viên</option>
+                    <option value="TruongBoMon">Trưởng Bộ Môn</option>
+                    <option value="NhanVienR&D">Nhân Viên R&D</option>
+                    <option value="TruongPhongKT">Trưởng phòng Khảo thí</option>
+                    <option value="TruongKhoa">Trưởng Khoa</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Subject" class="form-label">
+                    <i class="fas fa-book"></i> Bộ môn (Tiếng Anh)
+                </label>
+                <input asp-for="Subject" class="form-control" placeholder="Nhập Mã Môn Học" />
+                <span asp-validation-for="Subject" class="text-danger small"></span>
+            </div>
+
+            <button type="submit" class="btn-register">
+                <i class="fas fa-user-plus me-2"></i> Đăng ký
+            </button>
+        </form>
+
+        <div class="register-footer">
+            <p>Đã có tài khoản? <a asp-action="Dangnhap">Đăng nhập</a></p>
+            <div class="copyright">
+                © 2025 QBCA - Hệ thống ngân hàng câu hỏi
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .register-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 2rem;
+        }
+
+        .register-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+            .register-header h2 {
+                color: #4361ee;
+                margin-bottom: 0.5rem;
+            }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 30px;
+            border: none;
+            background: #4361ee;
+            color: white;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+            .btn-register:hover {
+                background: #3a0ca3;
+            }
+
+        .register-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #666;
+        }
+    </style>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

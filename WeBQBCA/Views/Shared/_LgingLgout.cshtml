@@ -1,0 +1,335 @@
+﻿@{
+    var username = Context.Session.GetString("Username") ?? "Khách";
+    var role = Context.Session.GetString("Role") ?? "";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - QBCA</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .topbar-contact {
+            z-index: 1050;
+            position: relative;
+        }
+
+        .dashboard-page {
+            display: flex;
+            margin: 0;
+            background-color: #f4f6f9;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background-color: #1a252f;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        .brand-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .brand-text {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            border-top: 1px solid #34495e;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+            .nav-link:hover,
+            .nav-link.active {
+                background-color: #34495e;
+            }
+
+        .nav-icon {
+            margin-right: 10px;
+        }
+
+        .sidebar-footer {
+            padding: 15px 20px;
+            background-color: #1a252f;
+            border-top: 1px solid #34495e;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-info {
+            flex-grow: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            display: block;
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+
+        .logout-btn {
+            color: #e74c3c;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            background-color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+            color: #999;
+        }
+
+        .search-input {
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px 15px;
+            width: 250px;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-btn {
+            background: none;
+            border: none;
+            margin-right: 20px;
+            position: relative;
+            font-size: 18px;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background-color: red;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 10px;
+        }
+
+        .content-area {
+            padding: 30px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <!-- ✅ Topbar Start -->
+    <div class="container-fluid bg-dark text-white topbar-contact">
+        <div class="row py-2 px-lg-5">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                    <small class="px-3">|</small>
+                    <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center justify-content-center justify-content-lg-end">
+                    <a class="text-white px-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-white px-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="text-white px-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="text-white px-2" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="text-white pl-2" href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ✅ Topbar End -->
+    <!-- ✅ Dashboard layout: sidebar + main content -->
+    <div class="dashboard-page">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <a asp-controller="Auth" asp-action="Index" class="brand-logo">
+                    <div class="brand-icon"><i class="fas fa-book-open"></i></div>
+                    <h1 class="brand-text">QBCA</h1>
+                </a>
+            </header>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a asp-controller="Auth" asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Bảng điều khiển</span>
+                        </a>
+                    </li>
+                    @if (string.IsNullOrEmpty(username))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auth" asp-action="Dangky">Đăng ký</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auth" asp-action="Dangnhap">Đăng nhập</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=@username&background=4361ee&color=fff" class="user-avatar" />
+                    <div class="user-info">
+                        <span class="user-name">@username</span>
+                        <span class="user-role">@role</span>
+                    </div>
+                    @if (!string.IsNullOrEmpty(username))
+                    {
+                        <form asp-controller="Auth" asp-action="Dangxuat" method="post">
+                            <button class="logout-btn" title="Đăng xuất" style="background: none; border: none;">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </form>
+                    }
+                </div>
+            </footer>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar nội bộ -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="search" class="search-input" placeholder="Tìm kiếm...">
+                </div>
+                <div class="topbar-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=@username&background=4361ee&color=fff" class="user-avatar" />
+                        <span class="user-name">@username</span>
+                        <i class="fas fa-chevron-down user-dropdown"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Nội dung có ảnh nền -->
+            <div class="content-area">
+                <!-- Banner ảnh làm nền và chữ nằm phía trên -->
+                <div class="banner-container position-relative text-center text-white mb-4">
+                    <img src="~/img/anh_dep_1.jpg " alt="Banner" class="img-fluid w-100 banner-image" />
+                    <div class="banner-text position-absolute top-50 start-50 translate-middle">
+                        <h2 class="fw-bold display-5">Chào mừng @username đến với QBCA</h2>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>

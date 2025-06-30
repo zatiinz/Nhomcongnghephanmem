@@ -1,0 +1,105 @@
+﻿@model WeBQBCA.Models.ViewModel.LoginViewModel
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+    Layout = "~/Views/Shared/_LgingLgout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/register.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+}
+
+<div class="register-wrapper">
+    <div class="register-card">
+        <div class="register-header">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>QBCA</span>
+            </div>
+            <h2>Đăng nhập tài khoản</h2>
+        </div>
+
+        <form asp-action="Dangnhap" asp-controller="Auth" method="post" class="register-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger text-center mb-2"></div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger text-center">@ViewBag.Error</div>
+            }
+
+            <div class="form-group">
+                <label asp-for="Username">Tên đăng nhập</label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+                </div>
+                <span asp-validation-for="Username" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Mật khẩu</label>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu" id="password" />
+                    <button type="button" class="toggle-password" tabindex="-1">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <span asp-validation-for="Password" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SubjectId">Môn học</label>
+                <div class="input-group">
+                    <i class="fas fa-book"></i>
+                    <select asp-for="SubjectId" class="form-control" asp-items="ViewBag.Subjects">
+                        <option value="">-- Chọn môn học --</option>
+                    </select>
+                </div>
+                <span asp-validation-for="SubjectId" class="error-message"></span>
+            </div>
+
+
+            <button type="submit" class="register-btn">
+                <i class="fas fa-sign-in-alt"></i> Đăng nhập
+            </button>
+        </form>
+
+        <div class="register-footer">
+            <p>Bạn chưa có tài khoản? <a href="/Auth/Dangky">Đăng ký ngay</a></p>
+            <div class="language-selector mt-2">
+                <i class="fas fa-globe"></i>
+                <select aria-label="Ngôn ngữ">
+                    <option value="vi" selected>Tiếng Việt</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div class="copyright">
+                © 2025 QBCA - FPT University
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.querySelector('.toggle-password');
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function () {
+                    const input = document.getElementById('password');
+                    const icon = this.querySelector('i');
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.replace('fa-eye', 'fa-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.replace('fa-eye-slash', 'fa-eye');
+                    }
+                });
+            }
+        });
+    </script>
+}

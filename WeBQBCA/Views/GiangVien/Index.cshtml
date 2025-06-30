@@ -1,0 +1,108 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Trang chủ Giảng viên";
+    Layout = "~/Views/Shared/_GiangVien.cshtml";
+    var username = HttpContextAccessor.HttpContext?.Session.GetString("Username") ?? "Giảng Viên";
+    var role = HttpContextAccessor.HttpContext?.Session.GetString("Role") ?? "Giảng Viên";
+}
+
+<main class="main-content">
+    <header class="topbar">
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="search" class="search-input" placeholder="Tìm kiếm...">
+        </div>
+
+        <div class="topbar-actions">
+            <button class="notification-btn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=@username&background=4361ee&color=fff" alt="User Avatar" class="user-avatar">
+                <span class="user-name">@username</span>
+                <i class="fas fa-chevron-down user-dropdown"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-area">
+        <div id="content" class="container">
+            <div class="welcome-section text-center mb-5">
+                <h2>Chào mừng @username đến với khu vực giảng viên</h2>
+                <p class="text-muted">Bạn đang đăng nhập với quyền <strong>@role</strong></p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-cloud-upload-alt fa-2x mb-2 text-primary"></i>
+                            <h5 class="card-title">Tải lên câu hỏi</h5>
+                            <p class="card-text">Tải các câu hỏi mới vào hệ thống.</p>
+                            <a asp-controller="GiangVien" asp-action="TaiCauHoi" class="btn btn-outline-primary btn-sm">Tải câu hỏi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-clone fa-2x mb-2 text-warning"></i>
+                            <h5 class="card-title">Kiểm tra trùng lặp</h5>
+                            <p class="card-text">Xem để xử lý các câu hỏi bị trùng.</p>
+                            <a asp-controller="GiangVien" asp-action="KiemTraTrungLap" class="btn btn-outline-warning btn-sm">Kiểm tra</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-history fa-2x mb-2 text-success"></i>
+                            <h5 class="card-title">Lịch sử chỉnh sửa</h5>
+                            <p class="card-text">Kiểm tra thử và chỉnh sữa câu hỏi.</p>
+                            <a asp-controller="GiangVien" asp-action="LichSuCauHoi" class="btn btn-outline-success btn-sm">Xem lịch sử</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-star fa-2x mb-2 text-warning"></i>
+                            <h5 class="card-title">Đánh Giá Đề thi</h5>
+                            <p class="card-text">Thử làm và đưa ra nhận xét về đề thi.</p>
+                            <a asp-controller="GiangVien" asp-action="DanhGiaGV" class="btn btn-outline-warning btn-sm">Đánh giá ngay</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-check-circle fa-2x mb-2 text-info"></i>
+                            <h5 class="card-title">AI BERT</h5>
+                            <p class="card-text">Sử dụng AI kiểm tra trùng lặp ngữ nghĩa câu hỏi.</p>
+                            <a asp-controller="GiangVien" asp-action="AIBERT" class="btn btn-outline-info btn-sm">Sử dụng AI</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-list fa-2x mb-2 text-info"></i>
+                            <h5 class="card-title">Danh sách câu hỏi</h5>
+                            <p class="card-text">Quản lý ngân hàng câu hỏi.</p>
+                            <a asp-controller="GiangVien" asp-action="DanhSachCauHoi" class="btn btn-outline-info btn-sm">Xem danh sách</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>

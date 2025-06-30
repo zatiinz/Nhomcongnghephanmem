@@ -1,0 +1,46 @@
+﻿@model WeBQBCA.Data.Question
+
+@{
+    ViewData["Title"] = "Xoá câu hỏi";
+    Layout = "~/Views/Shared/_GiangVien.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-danger">Xác nhận xoá câu hỏi</h2>
+
+    <div class="alert alert-warning">
+        <strong>Bạn có chắc chắn muốn xoá câu hỏi sau không?</strong>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nội dung câu hỏi:</label>
+        <div class="form-control-plaintext">@Model.QuestionText</div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Môn học:</label>
+        <div class="form-control-plaintext">@Model.SubjectId</div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Độ khó:</label>
+        <div class="form-control-plaintext">@Model.DifficultyLevel</div>
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="QuestionId" />
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash-alt me-1"></i> Xoá
+            </button>
+            <a asp-action="DanhSachCauHoi" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-1"></i> Huỷ
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

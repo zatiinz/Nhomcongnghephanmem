@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Phê duyệt câu hỏi";
+    Layout = "~/Views/Shared/_GiangVien.cshtml";
+}
+
+<div class="content-area">
+    <h2 class="mb-4">Danh sách câu hỏi chờ phê duyệt</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Mã câu hỏi</th>
+                <th>Nội dung</th>
+                <th>Người tạo</th>
+                <th>Ngày gửi</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Q123</td>
+                <td>Choose the correct answer to complete the sentence...</td>
+                <td>GV001 - Nguyễn Văn A</td>
+                <td>20/06/2025</td>
+                <td>
+                    <button class="btn btn-success btn-sm" onclick="approveQuestion('Q123')">Phê duyệt</button>
+                    <button class="btn btn-danger btn-sm" onclick="rejectQuestion('Q123')">Từ chối</button>
+                </td>
+            </tr>
+            <!-- Thêm các dòng khác từ CSDL -->
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        function approveQuestion(id) {
+            alert("Đã phê duyệt câu hỏi " + id);
+            // TODO: Gọi API thực tế để xử lý
+        }
+
+        function rejectQuestion(id) {
+            alert(" Đã từ chối câu hỏi " + id);
+            // TODO: Gọi API thực tế để xử lý
+        }
+    </script>
+}

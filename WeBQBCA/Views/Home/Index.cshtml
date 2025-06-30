@@ -1,0 +1,155 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var username = Context.Session.GetString("Username") ?? "Khách";
+    var role = Context.Session.GetString("Role") ?? "";
+}
+
+<div class="home-container">
+    <div class="welcome-banner">
+        <h1>CHÀO MỪNG ĐẾN HỆ THỐNG <span class="highlight">QBCA</span></h1>
+        <p class="lead">Hệ thống hỗ trợ kiểm tra và quản lý ngân hàng câu hỏi thông minh</p>
+
+        @if (!string.IsNullOrEmpty(role))
+        {
+            <div class="user-welcome mt-4">
+                <p>Xin chào <strong>@username</strong> (Vai trò: @role)</p>
+                <a asp-controller="Home" asp-action="Dangxuat" class="btn btn-logout mt-2">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="auth-buttons mt-4">
+                <a asp-controller="Home" asp-action="Dangnhap" class="btn btn-primary btn-lg px-4 me-2">
+                    <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                </a>
+                <a asp-controller="Home" asp-action="Dangky" class="btn btn-outline-light btn-lg px-4">
+                    <i class="fas fa-user-plus"></i> Đăng ký
+                </a>
+            </div>
+        }
+    </div>
+
+    <div class="features-section">
+        <h2 class="text-center mb-4">Tính năng nổi bật</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-database feature-icon"></i>
+                <h3>Ngân hàng câu hỏi</h3>
+                <p>Quản lý và phân loại câu hỏi theo môn học, chương trình</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-robot feature-icon"></i>
+                <h3>AI kiểm tra</h3>
+                <p>Hỗ trợ kiểm tra trùng lặp và đánh giá chất lượng câu hỏi</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line feature-icon"></i>
+                <h3>Báo cáo thống kê</h3>
+                <p>Theo dõi và phân tích hiệu quả sử dụng ngân hàng câu hỏi</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .home-container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 2rem;
+    }
+
+    .welcome-banner {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: linear-gradient(to right, #4d9fef, #4361ee);
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+        .welcome-banner h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+        }
+
+    .highlight {
+        color: #fcbf49;
+    }
+
+    .auth-buttons .btn {
+        border-radius: 30px;
+        font-weight: 600;
+    }
+
+    .user-welcome {
+        color: #fff;
+    }
+
+    .btn-logout {
+        background-color: #f72585;
+        color: white;
+        padding: 0.5rem 1.2rem;
+        border-radius: 25px;
+        transition: 0.3s;
+    }
+
+        .btn-logout:hover {
+            background-color: #d61c6c;
+        }
+
+    .features-section {
+        margin-top: 4rem;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+        }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        color: #4361ee;
+        margin-bottom: 1rem;
+    }
+
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+</style>
+
+<!-- Font đẹp -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />

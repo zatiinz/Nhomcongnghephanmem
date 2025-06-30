@@ -1,0 +1,41 @@
+﻿@model WeBQBCA.Data.Subject
+
+@{
+    ViewData["Title"] = "Tạo môn học";
+    Layout = "~/Views/Shared/_NhanVienR_D.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Tạo Môn Học Mới</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["Success"]</div>
+    }
+
+    <form asp-action="CreateSubject" method="post" class="w-50 mx-auto shadow p-4 rounded bg-light">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="form-group mb-3">
+            <label asp-for="SubjectId" class="form-label">Mã môn học</label>
+            <input asp-for="SubjectId" class="form-control" placeholder="VD: MATH101" />
+            <span asp-validation-for="SubjectId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="SubjectName" class="form-label">Tên môn học</label>
+            <input asp-for="SubjectName" class="form-control" placeholder="VD: Toán cao cấp" />
+            <span asp-validation-for="SubjectName" class="text-danger"></span>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-plus-circle me-1"></i> Tạo môn học
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

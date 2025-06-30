@@ -1,0 +1,477 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\WeBQBCA\\WeBQBCA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\controllers\\giangviencontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\controllers\\giangviencontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\repostery\\userreposrtory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\repostery\\userreposrtory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\questions\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\questions\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\questions\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\questions\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\questions\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\questions\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\questions\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\questions\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\shared\\_giangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\shared\\_giangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\giangvien\\taicauhoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\giangvien\\taicauhoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\data\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\data\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\giangvien\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\giangvien\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\wwwroot\\css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\wwwroot\\css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\giangvien\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\giangvien\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\shared\\_lginglgout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\shared\\_lginglgout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\data\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\data\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\data\\reviewtask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\data\\reviewtask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\giangvien\\danhsachcauhoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\giangvien\\danhsachcauhoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\controllers\\nhanvienr_dcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\controllers\\nhanvienr_dcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\shared\\_admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\shared\\_admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|d:\\webqbca\\webqbca\\webqbca\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FBAE58F-C55F-4367-880B-BC0895207952}|WeBQBCA\\WeBQBCA.csproj|solutionrelative:webqbca\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 8,
+          "SelectedChildIndex": 23,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Questions\\Create.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Questions\\Create.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Questions\\Create.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Questions\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-29T16:55:12.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Questions\\Delete.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Questions\\Delete.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Questions\\Delete.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Questions\\Delete.cshtml",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAuwCkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-29T16:55:11.841Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Questions\\Details.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Questions\\Details.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Questions\\Details.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Questions\\Details.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAuwCgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-29T16:54:27.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserReposrtory.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Repostery\\UserReposrtory.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Repostery\\UserReposrtory.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Repostery\\UserReposrtory.cs",
+              "RelativeToolTip": "WeBQBCA\\Repostery\\UserReposrtory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T16:53:42.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Questions\\Index.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Questions\\Index.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Questions\\Index.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Questions\\Index.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwDMAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-29T16:53:40.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "style.css",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\wwwroot\\css\\style.css",
+              "RelativeDocumentMoniker": "WeBQBCA\\wwwroot\\css\\style.css",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\wwwroot\\css\\style.css",
+              "RelativeToolTip": "WeBQBCA\\wwwroot\\css\\style.css",
+              "ViewState": "AgIAAGcBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-29T16:19:52.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "register.css",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\wwwroot\\css\\register.css",
+              "RelativeDocumentMoniker": "WeBQBCA\\wwwroot\\css\\register.css",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\wwwroot\\css\\register.css",
+              "RelativeToolTip": "WeBQBCA\\wwwroot\\css\\register.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-29T13:35:36.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\GiangVien\\Edit.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\GiangVien\\Edit.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\GiangVien\\Edit.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\GiangVien\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-29T09:18:58.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_GiangVien.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Shared\\_GiangVien.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Shared\\_GiangVien.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Shared\\_GiangVien.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Shared\\_GiangVien.cshtml",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAuwJgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-29T09:18:49.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\GiangVien\\Index.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\GiangVien\\Index.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\GiangVien\\Index.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\GiangVien\\Index.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAEcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-29T09:11:45.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "WeBQBCA\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "WeBQBCA\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-29T09:00:11.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAwEIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-29T08:58:07.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "WeBQBCA\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:42:22.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Question.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Data\\Question.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Data\\Question.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Data\\Question.cs",
+              "RelativeToolTip": "WeBQBCA\\Data\\Question.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAIBAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:35:31.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Subject.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Data\\Subject.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Data\\Subject.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Data\\Subject.cs",
+              "RelativeToolTip": "WeBQBCA\\Data\\Subject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:35:30.229Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Services\\AuthService.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Services\\AuthService.cs",
+              "RelativeToolTip": "WeBQBCA\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:32:19.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Services\\IAuthService.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Services\\IAuthService.cs",
+              "RelativeToolTip": "WeBQBCA\\Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:32:18.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "WeBQBCA\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:26:09.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ReviewTask.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Data\\ReviewTask.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Data\\ReviewTask.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Data\\ReviewTask.cs",
+              "RelativeToolTip": "WeBQBCA\\Data\\ReviewTask.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA4wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:22:29.97Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DanhSachCauHoi.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\GiangVien\\DanhSachCauHoi.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\GiangVien\\DanhSachCauHoi.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\GiangVien\\DanhSachCauHoi.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\GiangVien\\DanhSachCauHoi.cshtml",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-28T16:06:09.527Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TaiCauHoi.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\GiangVien\\TaiCauHoi.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\GiangVien\\TaiCauHoi.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\GiangVien\\TaiCauHoi.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\GiangVien\\TaiCauHoi.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABEAAABrAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-28T15:18:24.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GiangVienController .cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Controllers\\GiangVienController .cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Controllers\\GiangVienController .cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Controllers\\GiangVienController .cs",
+              "RelativeToolTip": "WeBQBCA\\Controllers\\GiangVienController .cs",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAQwLkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T15:16:14.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Program.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Program.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Program.cs",
+              "RelativeToolTip": "WeBQBCA\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAtwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T06:20:05.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\appsettings.json",
+              "RelativeDocumentMoniker": "WeBQBCA\\appsettings.json",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\appsettings.json",
+              "RelativeToolTip": "WeBQBCA\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-26T06:19:06.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "NhanVienR_DController.cs",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Controllers\\NhanVienR_DController.cs",
+              "RelativeDocumentMoniker": "WeBQBCA\\Controllers\\NhanVienR_DController.cs",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Controllers\\NhanVienR_DController.cs",
+              "RelativeToolTip": "WeBQBCA\\Controllers\\NhanVienR_DController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T04:55:37.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "_Admin.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Shared\\_Admin.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Shared\\_Admin.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Shared\\_Admin.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Shared\\_Admin.cshtml",
+              "ViewState": "AgIAACwAAAAAAAAAAADgvzwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-25T22:44:44.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "_LgingLgout.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Shared\\_LgingLgout.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Shared\\_LgingLgout.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Shared\\_LgingLgout.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Shared\\_LgingLgout.cshtml",
+              "ViewState": "AgIAAJIBAAAAAAAAAAAAALsBAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-25T22:04:33.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WeBQBCA\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\WeBQBCA\\WeBQBCA\\WeBQBCA\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WeBQBCA\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAABAAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-25T21:48:37.706Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

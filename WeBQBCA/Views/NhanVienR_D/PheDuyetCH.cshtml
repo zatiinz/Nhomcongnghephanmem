@@ -1,0 +1,41 @@
+﻿// View: Views/NhanVienR_D/PheDuyetCH.cshtml
+@model IEnumerable<WeBQBCA.Data.ReviewTask>
+@{
+    ViewData["Title"] = "Phê duyệt câu hỏi";
+    Layout = "~/Views/Shared/_NhanVienR_D.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Câu hỏi</th>
+            <th>Môn học</th>
+            <th>Người tạo</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Question.QuestionText</td>
+                <td>@task.Question.Subject?.SubjectName</td>
+                <td>@task.Creator?.Username</td>
+                <td><span class="badge bg-warning">@task.Status</span></td>
+                <td>
+                    <form asp-action="PheDuyetQuestion" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@task.QuestionId" />
+                        <button type="submit" class="btn btn-success btn-sm">Duyệt</button>
+                    </form>
+                    <form asp-action="TuChoi" method="post" class="d-inline">
+                        <input type="hidden" name="taskId" value="@task.ReviewTaskId" />
+                        <button type="submit" class="btn btn-danger btn-sm">Từ chối</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

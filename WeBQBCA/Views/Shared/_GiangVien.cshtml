@@ -1,0 +1,219 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    var username = HttpContextAccessor.HttpContext?.Session.GetString("Username") ?? "GiangVien";
+    var role = HttpContextAccessor.HttpContext?.Session.GetString("Role") ?? "GiangVien";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - QBCA Giảng viên</title>
+
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css" />
+    
+
+    <style>
+        body.dashboard-page {
+            display: flex;
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1e293b;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        .sidebar-header {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+
+        .sidebar-nav {
+            flex-grow: 1;
+            padding: 1rem;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 1rem;
+        }
+
+        .nav-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+            .nav-link.active,
+            .nav-link:hover {
+                color: #fff;
+                font-weight: bold;
+            }
+
+        .nav-icon {
+            margin-right: 10px;
+        }
+
+        .sidebar-footer {
+            padding: 1rem;
+            border-top: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            border-radius: 50%;
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .content-area {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body class="dashboard-page">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            <a href="#" class="brand-logo">
+                <div class="brand-icon"><i class="fas fa-book-open"></i></div>
+                <h1 class="brand-text">QBCA</h1>
+            </a>
+        </header>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a asp-controller="GiangVien" asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span class="nav-text">Trang chủ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="GiangVien" asp-action="TaiCauHoi" class="nav-link">
+                        <i class="fas fa-cloud-upload-alt nav-icon"></i>
+                        <span class="nav-text">Tải câu hỏi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="GiangVien" asp-action="KiemTraTrungLap" class="nav-link">
+                        <i class="fas fa-clone nav-icon"></i>
+                        <span class="nav-text">Kiểm tra trùng lặp</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="GiangVien" asp-action="LichSuCauHoi" class="nav-link">
+                        <i class="fas fa-clock nav-icon"></i>
+                        <span class="nav-text">Lịch sử chỉnh sửa</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="GiangVien" asp-action="DanhGiaGV" class="nav-link">
+                        <i class="fas fa-star nav-icon"></i>
+                        <span class="nav-text">Đánh giá đề thi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="GiangVien" asp-action="AIBERT" class="nav-link">
+                        <i class="fas fa-check-circle nav-icon"></i>
+                        <span class="nav-text">AI BERT</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="GiangVien" asp-action="DanhSachCauHoi" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                        <span class="nav-text">Danh sách câu hỏi</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=@(System.Net.WebUtility.UrlEncode(username))&background=4361ee&color=fff"
+                     alt="User Avatar" class="user-avatar" />
+                <div class="user-info">
+                    <span class="user-name">@username</span><br />
+                    <span class="user-role">@role</span>
+                </div>
+            </div>
+            <form asp-controller="Auth" asp-action="Dangxuat" method="post" class="d-inline">
+                <button type="submit" class="btn btn-link text-light" style="border: none; background: none;">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </button>
+            </form>
+
+        </footer>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="topbar">
+            <div><h2>@ViewData["Title"]</h2></div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input class="search-input" type="text" placeholder="Tìm kiếm..." />
+            </div>
+        </header>
+
+        <div class="content-area">
+            @RenderBody()
+        </div>
+    </main>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

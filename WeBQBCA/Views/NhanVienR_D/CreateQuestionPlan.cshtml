@@ -1,0 +1,54 @@
+﻿@model WeBQBCA.Models.CreateTaskViewModel
+
+@{
+    ViewData["Title"] = "Tạo kế hoạch câu hỏi";
+    Layout = "~/Views/Shared/_NhanVienR_D.cshtml";
+}
+
+<h2 class="mb-4">Tạo kế hoạch câu hỏi</h2>
+
+<form asp-action="CreateQuestionPlan" method="post" class="card p-4 shadow-sm">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="form-floating mb-3">
+        <select asp-for="SubjectId" class="form-select" asp-items="ViewBag.Subjects">
+            <option value="">-- Chọn môn học --</option>
+        </select>
+        <label asp-for="SubjectId">Môn học</label>
+        <span asp-validation-for="SubjectId" class="text-danger small"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <select asp-for="AssignedTo" class="form-select" asp-items="ViewBag.Users">
+            <option value="">-- Chọn người được giao --</option>
+        </select>
+        <label asp-for="AssignedTo">Giao cho</label>
+        <span asp-validation-for="AssignedTo" class="text-danger small"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="Title" class="form-control" placeholder="Nhập tiêu đề" />
+        <label asp-for="Title">Tiêu đề kế hoạch</label>
+        <span asp-validation-for="Title" class="text-danger small"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="DueDate" type="date" class="form-control" />
+        <label asp-for="DueDate">Deadline</label>
+        <span asp-validation-for="DueDate" class="text-danger small"></span>
+    </div>
+
+    <div class="form-floating mb-4">
+        <textarea asp-for="Description" class="form-control" style="height: 120px;" placeholder="Nhập mô tả kế hoạch"></textarea>
+        <label asp-for="Description">Mô tả kế hoạch</label>
+        <span asp-validation-for="Description" class="text-danger small"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        <i class="fas fa-check-circle me-1"></i> Tạo kế hoạch
+    </button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

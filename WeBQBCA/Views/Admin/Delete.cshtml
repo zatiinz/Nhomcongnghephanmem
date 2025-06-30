@@ -1,0 +1,33 @@
+﻿@model WeBQBCA.Data.User
+
+@{
+    ViewData["Title"] = "Xóa người dùng";
+    Layout = "~/Views/Shared/_Admin.cshtml"; 
+}
+
+<h2 class="mt-4">Xác nhận xóa người dùng</h2>
+
+<div class="alert alert-warning mt-3">
+    <strong>Bạn có chắc chắn muốn xóa người dùng sau?</strong>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Mã người dùng (User ID)</dt>
+            <dd class="col-sm-9">@Model.UserId</dd>
+
+            <dt class="col-sm-3">Tên đăng nhập</dt>
+            <dd class="col-sm-9">@Model.Username</dd>
+
+            <dt class="col-sm-3">Vai trò</dt>
+            <dd class="col-sm-9">@Model.Role</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post" class="mt-4">
+    <input type="hidden" asp-for="UserId" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="QuanglyNguoiDung" class="btn btn-secondary ms-2">Hủy</a>
+</form>

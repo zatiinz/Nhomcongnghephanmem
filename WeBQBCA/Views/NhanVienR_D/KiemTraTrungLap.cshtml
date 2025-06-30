@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Kiểm tra trùng lặp câu hỏi";
+    Layout = "~/Views/Shared/_NhanVienR_D.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">🔍 Kiểm Tra Trùng Lặp Câu Hỏi Theo Môn Học</h2>
+
+    <form asp-action="KiemTraTrungLap" method="post" class="card p-4 shadow-sm">
+        <div class="mb-3">
+            <label for="cauHoiMoi" class="form-label">Nội dung câu hỏi</label>
+            <textarea name="cauHoiMoi" class="form-control" rows="3" required placeholder="Nhập nội dung câu hỏi..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="subjectId" class="form-label">Môn học</label>
+            <select name="subjectId" class="form-control" asp-items="ViewBag.Subjects" required>
+                <option value="">-- Chọn môn học --</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-search"></i> Kiểm tra
+        </button>
+    </form>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info mt-4">
+            <strong>Kết quả:</strong> @ViewBag.Message
+        </div>
+    }
+</div>

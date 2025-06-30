@@ -1,0 +1,46 @@
+﻿@model WeBQBCA.Data.Question
+
+@{
+    ViewData["Title"] = "Chỉnh sửa câu hỏi";
+    Layout = "~/Views/Shared/_GiangVien.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="QuestionId" />
+
+        <div class="mb-3">
+            <label asp-for="QuestionText" class="form-label">Nội dung câu hỏi</label>
+            <textarea asp-for="QuestionText" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="QuestionText" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SubjectId" class="form-label">Môn học</label>
+            <select asp-for="SubjectId" class="form-select" asp-items="ViewBag.SubjectId">
+                <option value="">-- Chọn môn học --</option>
+            </select>
+            <span asp-validation-for="SubjectId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DifficultyLevel" class="form-label">Độ khó</label>
+            <select asp-for="DifficultyLevel" class="form-select">
+                <option value="">-- Chọn độ khó --</option>
+                <option value="Dễ">Dễ</option>
+                <option value="Trung bình">Trung bình</option>
+                <option value="Khó">Khó</option>
+            </select>
+            <span asp-validation-for="DifficultyLevel" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
